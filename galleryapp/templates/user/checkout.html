@@ -1,0 +1,108 @@
+{%extends 'user/template.html'%}
+{%block navcontent%}
+<div class="col-md-10 mt-2 art-prof-ban " align="center" style="height: 100px;">
+  <h1 class="mt-3">Check-Out</h1>
+</div>
+{%endblock%}
+{%block body%}
+
+<div class="container-fluid cart" style="background-color: #F5F5F5;">
+  <div class="row d-flex" >
+
+    <div class="col-md-6 mt-5 ms-md-5 offset-md-3" style="background-color: #ffffff;height:400px;" >
+      <div class="col-md-12">
+       <h6 style="color:gray;">CHECKOUT</h6>
+      </div>
+      <div class="col-xs-5 col-md-12">
+        <h6 >ADDRESS DETAILS</h6>
+        <hr>
+          <input id="number" name="" type="text" class="form-control mb-3" placeholder="House Number">
+        <input id="street-name" name="" type="text" class="form-control mb-3" placeholder="Street Name">
+        <input id="city-state"  name="" type="text" class="form-control mb-3" placeholder="City and State">
+        <input id="phone-no" name="" type="number" class="form-control mb-3" placeholder="Contact Phone No">
+        <textarea id="full-address" name="delivery-details" disabled cols="50" placeholder=" Full Delivery address">{{deets.user_address}}</textarea>
+        <p><button id="save" class="btn btn-dark col-6">Save shipping address and Proceed</button></p>
+       </div>
+    </div>
+
+    <div class="col-md-4 me-5 mt-5 offset-md-1" style="background-color: #ffffff;height:450px;">
+      <div class="col-md-12">
+        <h6 style="color:gray;">ORDER SUMMARY</h6>
+        <hr>
+       </div>
+
+      <div class="col-md-12  mt-1 me-5 overflow-auto" style="height:300px;">
+        <h6>Cart Items</h6>
+        {%with deets = cart_item%}
+            {% for i in deets %}
+          <!-- Art Items class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" -->
+          <div class="col-md-4 d-flex justify-content-between" class="art-item">
+            <div><a href="/proddeets/{{i.cart_art.art_id}}/"> <img src="{{url_for('static',filename='/uploads/'+i.cart_art.art_pix)}}" alt="product image" height="100" width ="100"></a></div>
+            <div class="col-md-8 " >
+              <p>{{i.cart_art.art_title}}</p>
+              <span><a href="/artist/{{i.upload_userid}}/">${{i.cart_art.art_price}}</a></span>
+            </div>
+          </div>
+          <hr>
+          {%endfor%}
+      </div>
+      <div class=" col-md-12 d-flex justify-content-between" style="background-color: #ffffff;">
+        <h5 >Subtotal</h5>
+        <h5 class="me-3">${{cart_total[0]}}</h5>
+      </div>
+      <hr>
+      <div style="background-color: #ffffff;text-decoration: none;color:black" align="center"><a  href="/cart" class="text-secondary">Modify Cart</a></div>
+    </div>
+    <form action="/payment" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+      <div class="mt-2 ms-5 mb-5 col-md-12 " align="center">
+        <p>Save shipping address and <button id="btn-save" class=" col-6 btn btn-dark">Proceed to Make Payment</button></p>
+      </div>
+    </form>
+    
+</div>
+  {%endwith%}
+  </div>
+</div>
+</div>
+
+{%endblock%}
+
+  {%block footer1%}
+
+  {%endblock%}
+
+{%block javascript%}
+<script>
+  $(document).ready(function(){
+    $('#save').click(function(){
+      var num = $('#number').val()
+      var street =$('#street-name').val()
+      var cityState=$('#city-state').val()
+      var phone =$('#phone-no').val()
+      var address=$('#full-address').val(num+', '+street+', '+cityState)
+      var csrf = "{{csrf_token()}}"
+      var data2send = {
+      "phone":phone,
+      "number":num,
+      "street":street,
+      "city":cityState,
+      "csrf_token":csrf}
+
+      $.ajax({
+        url:"/update/address",
+        data:data2send,
+        type:'get',
+        success:function(rsp){
+         alert(rsp)
+         $('#btn-save').click()
+        },
+        error:function(e){
+          console.log(e)
+        }
+      })
+    })
+  })
+
+</script>
+{%endblock%}

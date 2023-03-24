@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Art Gallery</title>
+  <!--Jquery-->
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <!--CSS-->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="fontawesome/fontawesome-free-6.2.1-web/css/all.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cinzel&family=Kenia&family=Roboto:wght@100&family=Rubik+Microbe&display=swap" rel="stylesheet">
+  <!--Bootstrap CSS-->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2 offset-10">
+            <a href="login.html">Login</a><span>//</span>
+            <a href="register.html">Register</a>
+            <img src="images/cart.png" alt="cart_icon">
+            <img src="images/heart.png" alt="favorite_icon">
+            <img src="images/user.png" alt="user_icon"> </div>
+        </div>
+        <div class="col-md-11 offset-1">
+            <nav class="navbar navbar-expand-lg" style="background-color:white; border-radius:20px;">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="Index.html">
+                    <img src="images/7.png" width=250px; height=150px;>
+                  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="row">
+        <div class="col">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="art.html">Art</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">Galleries</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Category
+                    </a>
+                    <ul class="dropdown-menu" style="background-color:white;">
+                      <li><a class="dropdown-item" href="#">photography</a></li>
+                      <li><a class="dropdown-item" href="#"> Sculpture</a></li>
+                      <li><a class="dropdown-item" href="#">Portrait</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Oil</a></li>
+                      <li><a class="dropdown-item" href="#">Acrylic</a></li>
+                      <li><a class="dropdown-item" href="#">Watercolor</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Services
+                    </a>
+                    <ul class="dropdown-menu" style="background-color:white;">
+                      <li><a class="dropdown-item" href="#">Become a seller</a></li>
+                      <li><a class="dropdown-item" href="#">Find a Gallery</a></li>
+                      <li><a class="dropdown-item" href="#">Mentorship</a></li>
+                      <li><a class="dropdown-item" href="#">Become Funded</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Market(June 1st 2023)</a>
+                  </li>
+                </ul>
+                <input type="text" placeholder="What are you looking for?" class="form-control">
+              </div>
+        </div>
+      </div>
+    
+    </div>
+            </nav>
+        </div>
+        </div>
+      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" align="right">
+                <h3>Sign up</h3>
+            </div>
+            <div class="col-md-6" id="signup-img">
+                <!-- <img src="images/art/4.jpg" width="500" height="500" alt="login background image"> -->
+            </div>
+            <div class="col-md-6 mt-5">
+                <form>
+                    <div>
+                        <label class="form-label"></label>
+                        <input type="text"
+                            class="form-control" placeholder="First Name">
+                      </div>
+                      <div>
+                        <label class="form-label"></label>
+                        <input type="text"
+                            class="form-control" placeholder="Last Name">
+                      </div>
+                    <div>
+                      <label class="form-label"></label>
+                      <input type="email"
+                          class="form-control" placeholder="Email or username">
+                    </div>
+                    <div>
+                        <label class="form-label"></label>
+                        <input type="text"
+                            class="form-control" placeholder="Phone number">
+                      </div>
+                    <div>
+                      <label class="form-label">password</label>
+                      <input type="password"
+                          id="pswd" class="form-control" placeholder="password">
+                    </div>
+                    <div>
+                        <label class="form-label"></label>
+                        <input type="password"
+                            id="pswd" class="form-control" placeholder="confirm password">
+                      </div>
+    
+                    <div class="mb-3 form-check">
+                      <label>
+                        <input type="checkbox" class="form-check-input codefnt"
+                            name="offer" style="color:skyblue">
+                            Remember me
+                      </label>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary col-6" id="sndmsg" >Sign up</button>
+                    <a href="login.html">login</a>
+                  </form>
+            </div>
+            <div class="col-md-12 mt-5" align="center">
+              <h1 class="form-cntact"> Have a question? Call or email us!</h1>
+              <h3 class="form-contact">hi@gmail.com <span>09085997855</span></h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{url_for('static',filename='bootstrap/js/bootstrap.bundle.js')}}"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

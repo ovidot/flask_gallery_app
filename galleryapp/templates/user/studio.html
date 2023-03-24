@@ -1,0 +1,129 @@
+{%extends 'user/template.html'%}
+{%block body%}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 art-prof-ban " align="center">
+      <h1 class="mt-5">My Studio</h1>
+      <h4 class="mt-2">Add a New Artwork</h4>
+    </div>
+  <div class="col-md-3 ps-4" >
+    <img src="{{url_for('static',filename='images/5.png')}}" id="prev-img" alt="upload picture" height="300rem" width ="300rem" class="studio-img mt-5 ms-0">
+    <hr>
+  </div>
+  <div class="col-md-8 mt-5">
+    {% with m=get_flashed_messages()%}
+    {%if m%}
+          {%for msg in m%}
+            <div class="alert alert-primary">{{msg |safe}}</div>
+          {%endfor%}
+        {%endif%}
+  {%endwith%}
+    <form action="{{ url_for('add_artworks')}}" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+      <div class="form-group row">
+                <div class="col-md-5 mb-3">
+                    <label for=""> <h4>Title</h4></label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+
+                <div class="col-md-7 mb-3">
+                    <label for=""> <h4>Artist FullName</h4></label>
+                    <input type="text" name="artist" class="form-control">
+                </div>
+
+                <div class="col-md-5 mb-3">
+                    <select name="catid" class="form-select form-select-lg mb-3">
+                        <option selected value=""> Select a Category</option>
+                        {%for c in category%}
+                        <option value="{{c.category_id}}">{{c.category_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-5 mb-3">
+                  <select name="style" class="form-select form-select-lg mb-3">
+                      <option selected value=""> Select a Style</option>
+                      {%for c in style%}
+                      <option value="{{c.style_id}}">{{c.style_name}}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+
+              <div class="col-md-5 mb-3">
+                <select name="material" class="form-select form-select-lg mb-3">
+                    <option selected value=""> Select a Material</option>
+                    {%for c in material%}
+                    <option value="{{c.material_id}}">{{c.material_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-5 mb-3">
+              <select name="subject" class="form-select form-select-lg mb-3">
+                  <option selected value=""> Select a Subject</option>
+                  {%for c in subject%}
+                  <option value="{{c.subject_id}}">{{c.subject_name}}</option>
+                  {% endfor %}
+              </select>
+          </div>
+
+                <div class="col-md-5 mb-3">
+                  <select name="medium" class="form-select form-select-lg mb-3">
+                      <option selected value=""> Select a Medium</option>
+                      {%for c in medium%}
+                      <option value="{{c.medium_id}}">{{c.medium_name}}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+
+
+                <div class="col-md-5 mb-3">
+                    <label for=""> <h4>Arwork Year</h4></label>
+                    <input type="number" min="1900" max="2024" step="1" value="2022" name="year" class="form-control">
+                </div>
+
+
+                <hr>
+                <div class="col-md-4 mt-2 mb-2">
+                    <label for=""> <h6>Dimension</h6></label>
+                    <input type="text" name="dimension" placeholder="12 X 13 inches" class="form-control">
+                </div>
+
+                <div class="col-md-4 mt-2 mb-2">
+                    <label for=""> <h6>Price</h6></label>
+                    <input type="number" name="price" placeholder="Enter artwork selling price" class="form-control">
+                </div>
+
+
+                <div class="form-group row">
+                    <label class=" mb-3">Select file </label>
+                    <div>
+                        <input class="btn btn-dark col-4 mb-3" type="file" onchange="showPreview(event);" accept="image/*" name="pix">
+                    </div>
+                    <div>
+                        <input type="submit" class="btn-dark btn col-3">
+                </div>
+                    </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+{%endblock%}
+{%block javascript%}
+<script type="text/javascript">
+  function showPreview(event){
+    if(event.target.files.length > 0 ){
+      var src=URL.createObjectURL(event.target.files[0]);
+      var preview = document.getElementById('prev-img');
+
+      preview.src = src;
+      preview.style.display = "block"
+    }
+  }
+</script>
+{%endblock%}

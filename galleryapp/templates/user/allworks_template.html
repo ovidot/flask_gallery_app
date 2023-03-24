@@ -1,0 +1,294 @@
+{%extends 'user/template.html'%}
+
+{%block body%}
+<div id="body">
+<div class="container-fluid">
+  <div class="row" style="justify-content:space-between;">
+    {%block breadcrumbs%}
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{'/'}}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Browse</li>
+      </ol>
+    </nav>
+    {%endblock%}
+    <div class="col-md-6 mb-5 ms-5">
+      <h2 style="font-family:cursive;">Original Art For Sale</h2>
+    </div>
+    <!-- <div class="col-md-3 pt-2 ms-5">
+        <select name="Sort" id="sort" value="Sort">
+        <option value="Sort">Sort</option>
+        <option value="recomended"><b>Recomended</b></option>
+        <option value="recomended">Date listed:New to old</option>
+        <option value="recomended">Price: Low to High</option>
+        <option value="recomended">Price: High to Low </option>
+    </select>
+    </div> -->
+  </div>
+    <div class="row mx-auto">
+  <div class="col-md-3" >
+
+    <h4>CATEGORY</h4>
+   <select class="form-control" name="category" id="sort-cat" >
+    <option value="Sort">Select a category</option>
+    {%if cat:%}
+    {%for c in cat%}
+    <option id="{{c.category_id}}" value="{{c.category_id}}">{{c.category_name}}</option>
+    {%endfor%}
+    {%else%}
+    <option value="">No Category available</option>
+    {%endif%}
+
+</select>
+<hr>
+<!-- <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            <h5>CATEGORY</h5>
+        </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+            <ol>
+                {%if cat%}
+            {% for c in cat %}
+            <div>
+                <input type="checkbox" value="{{c.category_id}}">
+            <label for="">{{ c.category_name}}</label>
+            </div>
+            {% endfor %}
+            {%else%}
+                <h6>No data available</h6>
+            {%endif%}
+            </ol>
+            <hr>
+            <h6><a href="#">view more</a></h6>
+            <hr>
+        </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            <h5>Medium</h5>
+        </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+        <div class="accordion-body">
+            <ol>
+                {%if med%}
+                {% for m in med %}
+                <div>
+                    <input type="checkbox" value="{{m.medium_id}}">
+                <label for="">{{ m.medium_name}}</label>
+                </div>
+                {% endfor %}
+                {%else%}
+                <h6>No data available</h6>
+                {%endif%}
+                </ol>
+                <hr>
+                <h6><a href="#">view more</a></h6>
+                <hr>
+        </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            <h5>Style</h5>
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+                <ol>
+                    {%if styl%}
+                    {% for s in styl %}
+                    <input type="checkbox" value="{{s.style_id}}">
+                    <label for="">{{ s.style_name}}</label>
+                    {% endfor %}
+                    {%else%}
+                    <h6>No data available</h6>
+                    {%endif%}
+                    </ol>
+                <hr>
+                <h6><a href="#">view more</a></h6>
+                <hr>
+            </div>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+            <h5>Material</h5>
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+            <div class="accordion-body">
+                <ol>
+                    {%if mate%}
+                    {% for m in mate %}
+                    <div>
+                    <input type="checkbox" value="{{m.material_id}}">
+                    <label for=""> {{ m.material_name}}</label>
+                    </div>
+                    {% endfor %}
+                    {%else%}
+                    <h6>No data available</h6>
+                    {%endif%}
+                    </ol>
+                <hr>
+                <h6><a href="#">view more</a></h6>
+                <hr>
+            </div>
+        </div>
+        </div>
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+        <h5>Subject</h5>
+        </button>
+    </h2>
+    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+        <div class="accordion-body">
+            <ol>
+                {%if subj%}
+                {% for s in subj %}
+                <div>
+                    <input type="checkbox" value="{{s.subject_id}}">
+                <label for="">{{ s.subject_name}}</label>
+                </div>
+                
+                    {% endfor %}
+                {%else%}
+                <h6>No data available</h6>
+                {%endif%}
+                </ol>
+            <hr>
+            <h6><a href="#">view more</a></h6>
+            <hr>
+        </div>
+    </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+            <h5>Username</h5>
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+            <div class="accordion-body">
+                <ol>
+                    {%if user%}
+                    {% for s in user %}
+                    <div>
+                    <input type="checkbox" value="{{s.subject_id}}">
+                    <label for="">{{ s.user_username}}</label>
+                    </div>
+                    {% endfor %}
+                    {%else%}
+                    <h6>No data available</h6>
+                    {%endif%}
+                    </ol>
+                <hr>
+                <h6><a href="#">view more</a></h6>
+                <hr>
+            </div>
+        </div>
+        </div>
+</div> 
+    <hr>-->
+  </div>
+{%block artbody%}
+
+{%endblock%}
+  </div>
+</div>
+</div>
+</div>
+
+{%endblock%}
+
+
+{%block javascript%}
+<script>
+    $(document).ready(function(){
+      $('#sort-cat').change(function(){
+        id = $(this).val()
+        $('#catname').html(id)
+        var codeBlock =
+        `{% with messages=get_flashed_messages()%}
+        {%if messages %}
+        {% for m in messages %}
+          <div class="alert alert-success">{{m}}</div>
+          {% endfor %}
+          {% endif %}
+        {%endwith%}
+        {{all_favid}}
+        <div class="row mt-5 artist-art-row">
+          {% for i in all_arts %}
+          {% for j in filtered %}
+          {%if i.art_id == j.product_id %}
+        <!-- Art Items class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" -->
+        <div class="col-md-4" class="art-item" id="art-itm">
+        <a href="/proddeets/{{i.art_id}}/"> <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image"  class="w-75 h-55"></a>
+          <p>
+          <a href="/cart/{{i.art_id}}/"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" id="cart"  aria-controls="offcanvasExample"></a>
+          <a href="/addfavorites/{{i.art_id}}/" id="fav" onclick="al()">
+              <span style=" color: black;">
+              <i class="fa fa-heart fa-lg" ></i>
+            </span>
+            </a>
+          <div class="col">
+            <div class="col-md-7"><h6>{{i.art_title}}</h6></div>
+            <div class="col-md-5 "><h6>'$'{{i.art_price}}</h6></div>
+          </div>
+          <span><a href="/artist/{{i.upload_userid}}/">{{i.artist_fullname}}</a></span>
+          <p>{{i.cat.category_name}}<span>,{{i.art_dimension}}</span></p>
+        </div>
+        {%else%}
+        {%endif%}
+        {%endfor%}
+        {%endfor%}`
+
+        $.ajax({
+          url:'/category/'+id,
+          type:'GET',
+          dataType:'json',
+          success: function(rsp){
+            console.log(rsp)
+            //var body = $('#fil');
+            //body.html(codeBlock)
+            window.location.href ='/fil/'+id
+          },
+          error:function(e){
+            console.log(e)
+          }
+        })
+        })
+
+        $('.item').click(function(){
+            var cid = $(this).data("id");
+            alert(cid)
+        
+            $.ajax({
+                url:'/category/'+id,
+                type:'GET',
+                dataType:'json',
+                success: function(rsp1){
+                console.log(rsp1)
+                //var body = $('#fil');
+                //body.html(codeBlock)
+                window.location.href ='/fil/'+id
+            },
+                error:function(e){
+                console.log(e)
+          }
+            })
+        })
+
+
+    })
+  </script>
+{%endblock%}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Art Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  	<!--CSS-->
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/7.png')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+  <link href="{{url_for('static',filename='fontawesome/fontawesome-free-6.2.1-web/css/all.css')}}" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cinzel&family=Kenia&family=Roboto:wght@100&family=Rubik+Microbe&display=swap" rel="stylesheet">
+  	<!--Bootstrap CSS-->
+		<link rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}" type="text/css">
+{%block css%}
+<style type="text/css">
+
+</style>
+{%endblock%}
+  </head>
+<body>
+  {%block navtop%}
+        <!--Navigation bar-->
+  <div class="container-fluid" id="nav-container">
+    <div class="row fx">
+      <div class="col-md-2">
+        <a class="navbar-brand" href="{{url_for('home')}}">
+            <img src="{{url_for('static',filename='images/7.png')}}" width=150px; height=100px;>
+          </a>
+      </div>
+      {%endblock%}
+      {%block navcontent%}
+      <div class="col-md-10  mt-2 " align=right>
+      {%if session.get('user')== None %}
+        <button class="btn btn-success"><a class="link-dark" href="{{url_for('user_login')}}">Login</a></button>
+        <button class="btn btn-dark" ><a class="link-light" href="{{url_for('user_signup')}}">Register</a></button>
+        {%else%}
+        <div class="dropdown">
+          <img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"<span class="fa" style="font-size:14px">10</span>
+
+          <a href="/favorites/"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon"></a>
+          {%if deets.user_pix == None %}
+          <img class=" rounded-circle dropdown-toggle" type="" data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false" src="{{url_for('static',filename='images/def_user.png')}}" width="50" height="50" class="" alt="user_icon">
+          {%else%}
+          <img class=" rounded-circle dropdown-toggle" type="" data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false" src="{{url_for('static',filename='/uploads/'+deets.user_pix)}}" width="50" height="50" class="" alt="user_icon">
+          {%endif%}
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{url_for('profile')}}">HI, {{deets.user_username}}</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{url_for('profile')}}">View Profile</a></li>
+            <li><a class="dropdown-item" href="{{url_for('studio')}}">Studio</a></li>
+            <li><a class="dropdown-item" href="{{url_for('orders')}}">Orders</a></li>
+            <li><a class="dropdown-item" href="{{url_for('account')}}">Account</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{url_for('user_logout')}}">lOGOUT</a></li>
+          </ul>
+        </div>
+        {%endif%}
+        <!--BS Navigation bar start-->
+        <nav class="navbar navbar-light navbar-expand-lg" style="background-color:white; border-radius:20px;">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{{url_for('home')}}">
+              <!-- <img src="images/7.png" width=150px; height=100px;> -->
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon 	glyphicon glyphicon-list"></span>
+          </button>
+          <div class="row">
+  <div class="col">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('browse_all', page_num=1)}}">BrowseAll</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('contact_us')}}" >About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+              </a>
+              <ul class="dropdown-menu" style="background-color:white;">
+                {% for c in cat%}
+                <li><a class="dropdown-item" href="{{url_for('fil',idd=c.category_id)}}">{{c.category_name}}</a></li>
+                {%endfor%}
+              </ul>
+            </li>
+              <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+                <ul class="dropdown-menu" style="background-color:white;">
+                <li><a class="dropdown-item" href="#">Become a seller</a></li>
+                <li><a class="dropdown-item" href="#">Find a Gallery</a></li>
+                <li><a class="dropdown-item" href="#">Mentorship</a></li>
+                <li><a class="dropdown-item" href="#">Commissioned art</a></li>
+              </ul> -->
+            </li>
+          </ul>
+
+        </div>
+  </div>
+</div>
+
+</div>
+      </nav>
+      <!--BS Navigation bar end-->
+      </div>
+      {%endblock%}
+    </div>
+
+</nav>
+  <!--Nav ends-->
+  <div class="container-fluid">
+      <div class="row">
+        {%block body%}
+
+    {%endblock%}
+    </div>
+    </div>
+     <!--Footer begins-->
+<div class="container-fluid">
+    <div class="row mt-4">
+      {%block footer1%}
+      <hr>
+      <div class="col-12 mt-2 mb-2" align="center">
+        
+        <div class="col-3">
+          <label for="">Subscribe to our newsletter</label>
+          {%if session.get('user')== None %}
+          <input class="form-control col-6 border-primary" id="email" type="email" placeholder="Subscribe to our Newsletter :abc@xyz.com" >
+          {%else%}
+          <input class="form-control col-6 border-primary" id="email" value="{{deets.user_email}}" type="email" placeholder="Subscribe to our Newsletter :abc@xyz.com" >
+          {%endif%}
+        </div>
+        <div class="col-6">
+          <button id="sub" class="btn btn-dark  mt-3"> subscribe</button>
+          <p id="alert"></p>
+        </div>
+      </div>
+      <hr>
+      {%endblock%}
+    </div>
+    <div class="row">
+      {%block footer2%}
+      <div class="col-12">
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+    
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+    
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>Ovidot's Gallery
+            </h6>
+            <p>
+              Short Description
+            </p>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Products
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Artists</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Galleries</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Art Categories</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Services</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">our story</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Profile</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> Lagos, L-GOS 100213, Nigeria</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              ovidotfinance@gmail.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> +234 803 45 6789</p>
+            <p><i class="fas fa-print me-3"></i> +234 803 45 6789</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+    
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2023 Copyright:
+      <a class="text-reset fw-bold" href="#">Ovidot.com</a>
+    </div>
+    <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    </div>
+    {%endblock%}
+    </div>
+  </div>
+  <!--Footer ends-->
+  
+    <!--Bootstrap CSS--><!--inside there is BS.js -->
+    
+<script src="{{url_for('static',filename='bootstrap/js/bootstrap.bundle.js')}}"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('#sub').click(function(){
+      var mail = $('#email').val()
+      var csrf = "{{csrf_token()}}"
+      var data2send = {'email':mail,"csrf_token":csrf}
+
+        $.ajax({
+          url:"/subscribe/newsletter",
+          data:data2send,
+          type:'get',
+          success:function(rsp){
+           console.log(rsp)
+           $('#alert').html('<p class="bg-dark col-3 rounded text-success mt-2">'+rsp+'</p>')
+           },
+           error:function(e){
+             console.log(e)}
+        })
+    })
+  })
+</script>
+{%block javascript%}
+
+{%endblock%}
+  <!--Cart Offcanvas-->
+  <div class="offcanvas offcanvas-end offcanvas-size-md" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <a href="/cart" class="btn btn-dark link-light">Go to cart</a>
+    </div>
+    <div class="offcanvas-body">
+      <div class="container">
+
+        <!-- CART ITEMS -->
+        <div class="row">
+          <div class="col-md-12 cart-prof-ban " align="center">
+            <h1 class="my-3">My Cart</h1>
+          </div>
+          <div class="col-12 offset-5 mb-3">
+          </div>
+          {%if cart_items != None:%}
+          {% for i in cart_items %}
+          <!-- Art Items -->
+          <div class="col-md-2" class="art-item">
+            <img src="{{url_for('static',filename='/uploads/'+i.cart_art.art_pix)}}" alt="product image" height="50" width ="50" class="">
+          </div>
+              <div class="col-md-4"><h6>{{i.cart_art.art_title}}</h6></div>
+            <div class="col-md-3"><span><a href="/artist/{{i.cart_art.user_id}}/">{{i.cart_art.artist_fullname}}</a></span></div>
+            <div class="col-md-2 "><h6>{{i.cart_art.art_price}}</h6></div>
+            <div class="col-md-1"> <a href="/del/{{i.cart_id}}/" type="botton" ><i class="fa fa-solid fa-trash"></i></a></div>
+          {%endfor%}
+          {%else%}
+          <div>No cart items</div>
+          {%endif%}
+        </div>
+      </div>
+    </div>
+    <div class="offcanvas-footer" align="center">
+      <!-- <h6 class="col-5 pt-3 ">Estimated Total</h5>
+      <h6 class="col-5 align-items-right "></h6> -->
+      <button class="btn btn-success col-5 btn-lg"> <a href="/checkout" style="color:black"><b> Check-Out</b></a></button>
+      <button class="btn btn-dark col-5 btn-lg"> <a href="/allworks/1" style="color:black"><b> Keep Shoping</b></a></button>
+    </div>
+  </div>
+</body>
+</html>

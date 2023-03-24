@@ -1,0 +1,26 @@
+{% extends 'user/account_template.html'%}
+
+{%block content%}
+{% with messages=get_flashed_messages()%}
+{%if messages %}
+{% for m in messages %}
+  <div>{{m|safe}}</div>
+  {% endfor %}
+  {% endif %}
+{%endwith%}
+<form action="" enctype="multipart/form-data" method="post">
+
+    <div class="col-xs-5 col-md-12">
+        <h6 >ADDRESS DETAILS</h6>
+        <hr>
+        <input name="" type="text" class="form-control mb-3" placeholder="House Number">
+        <input name="" type="text" class="form-control mb-3" placeholder="Street Name">
+        <input name="" type="text" class="form-control mb-3" placeholder="City and State">
+        <input name="" type="number" class="form-control mb-3" placeholder="Contact Phone No">
+        <textarea name="delivery-details" cols="50" id="dd" placeholder="Enter Full Delivery address"></textarea>
+        <button class="btn btn-dark col-6"> Save shipping address</button>
+       </div>
+
+</form>
+
+{%endblock%}

@@ -1,0 +1,82 @@
+*{
+ min-height: 0px;
+ border: 1px solid red;
+}
+a:link{
+  text-decoration: none;
+  color: black;
+}
+body{
+  background-color: black;
+}
+  /*Home page css*/
+.modal-content{
+  /*margin: auto !important;*/
+  width: 800px !important;
+}
+.su-img{
+position: relative;
+top: 100px;
+}
+#signup-img{
+  background-image:url("../images/carousel2.jpeg") ;
+  background-color: black;
+}
+#login-img{
+  background-image:url("../images/login_mod.jpg") ;
+  background-size: cover;
+}
+.lnd-pge{
+  background-color:white;
+  filter: blur(0px);
+  height:400px;
+  color: black;
+  font-family: cursive;
+  font-weight: bolder;
+  border-top-left-radius:20px;
+  border-bottom-left-radius:20px;
+}
+.ovlay{
+  /*background-color: rgba(0,0,0,0.1);*/
+  border-radius: 20px;
+}
+.carousel-img{
+  object-fit: cover;
+  height: 350px;
+}
+.lnd-pge1{
+  height: 400px;
+  background-color: white;
+  border-top-right-radius:20px;
+  border-bottom-right-radius:20px;
+}
+.sgnup-btn{
+  background-color:#A2A6F8 !important;
+  /*font-weight:700 !important;
+  font-size:32px !important;*/
+
+}
+.nav-link{
+  text-decoration: none;
+  color: black !important;
+  font-family: cursive;
+  font-weight: bolder;
+}
+.dropdown-item{
+  text-decoration: none;
+  color: black !important;
+  font-family: cursive;
+  font-weight: bolder;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+/*    ART page style*/
+#art_text{
+  font-size: 40px!important;
+  font-family: cursive;
+}   

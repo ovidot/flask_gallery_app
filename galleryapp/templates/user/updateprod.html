@@ -1,0 +1,44 @@
+{% extends 'user/account_template.html'%}
+
+{%block content%}
+<div class="row">
+    <div class="col">
+        {% with messages=get_flashed_messages()%}
+      {%if messages %}
+      {% for m in messages %}
+       {{m|safe}}
+        {% endfor %}
+        {% endif %}
+      {%endwith%}
+        <table class="table table-responsive table-stripped bg-light text-black ">
+            <thead>
+            <tr>
+                <th> S/N </th>
+                <th>Art image </th>
+                <th>Art Title </th>
+                <th>Art Price</th>
+                <th>Art category</th>
+                <th>uploaded by</th>
+                <th>Artist Fullname</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for  a in all_arts %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td> <img src="{{url_for('static',filename='/uploads/'+a.art_pix)}}" alt="profile picture" height="100" width ="100" class=""></td>
+                    <td>{{ a.art_title}}</td>
+                    <td>$1000</td>
+                    <td>{{ a.cat.category_name}}</td>
+                    <td>{{a.uploadedby.user_username}}</td>
+                    <td>{{a.artist_fullname}}</td>
+                    <td><a class="btn btn-dark link-light" href="/prod/{{a.art_id}}">Edit</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{%endblock%}

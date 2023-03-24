@@ -1,0 +1,195 @@
+{% extends 'admin/admin_template.html' %}
+{% block dashboard_header %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Manage Categories</h1>
+  
+</div>
+{% endblock%}
+{% block content %}
+{%with m = get_flashed_messages()%}
+{%if m%}
+{%for i in m%}
+<p class="alert alert-success"align='center'>{{i|safe}}</p>
+{%endfor%}
+{%endif%}
+{%endwith%}
+    <div class="col-md-12">
+        <form action="" method="post" novalidate>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+            <div class="form-group row " >
+                <div class="txt_field col-2 mb-3">
+                    <label><h6>Add a Category</h6></label>
+                    <input type="text"  name="catname" placeholder="add a category" class="form-control" required>
+                </div>
+                
+
+                <div class="txt_field col-2 mb-3">
+                    <label><h6>Add a Medium</h6></label>
+                    <input type="text" name="medium" placeholder="add a medium" class="form-control" required>
+                </div>
+
+                <div class="txt_field col-2 mb-3">
+                    <label><h6>Add a Style</h6></label>
+                    <input type="text" name="style" placeholder="add a style" class="form-control" required>
+                </div>
+
+                <div class="txt_field col-2 mb-3">
+                    <label><h6>Add a Material</h6></label>
+                    <input type="text" name="material" placeholder="add a material" class="form-control" required>
+                </div>
+
+                <div class="txt_field col-2 mb-3">
+                    <label><h6>Add a Subject</h6></label>
+                    <input type="text" name="subject" placeholder="add a subject" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">ADD</button>
+            </div>
+            <hr>
+        </form>
+    </div>
+    
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                  <h5>CATEGORY</h5>
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                <div class="accordion-body">
+                    <ol>
+                        {%if cat%}
+                    {% for c in cat %}
+                        <li class="mb-3">
+                            {{ c.category_name}}
+                            <a href="/admin/category/{{c.category_id}}"><i class="fa fa-trash" ></i></a>
+                        </li>
+                    {% endfor %}
+                    {%else%}
+                        <h6>No data available</h6>
+                        {%endif%}
+                    </ol>
+                  <hr>
+                  <h6><a href="#">view more</a></h6>
+                  <hr>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                  <h5>Medium</h5>
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    <ol>
+                        {%if med%}
+                        {% for m in med %}
+                            <li class="mb-3">
+                                {{ m.medium_name}}
+                                <a href="/admin/medium/{{m.medium_id}}"><i class="fa fa-trash" ></i></a>
+                            </li>
+                        {% endfor %}
+                        {%else%}
+                        <h6>No data available</h6>
+                        {%endif%}
+                        </ol>
+                      <hr>
+                      <h6><a href="#">view more</a></h6>
+                      <hr>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    <h5>Style</h5>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                  <div class="accordion-body">
+                      <ol>
+                          {%if styl%}
+                          {% for s in styl %}
+                              <li class="mb-3">
+                                  {{ s.style_name}}
+                                  <a href="/admin/style/{{s.style_id}}"><i class="fa fa-trash" ></i></a>
+                              </li>
+                          {% endfor %}
+                          {%else%}
+                          <h6>No data available</h6>
+                          {%endif%}
+                          </ol>
+                        <hr>
+                        <h6><a href="#">view more</a></h6>
+                        <hr>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                    <h5>Material</h5>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                  <div class="accordion-body">
+                      <ol>
+                          {%if mate%}
+                          {% for m in mate %}
+                              <li class="mb-3">
+                                  {{ m.material_name}}
+                                  <a href="/admin/material/{{m.material_id}}"><i class="fa fa-trash" ></i></a>
+                              </li>
+                          {% endfor %}
+                          {%else%}
+                          <h6>No data available</h6>
+                          {%endif%}
+                          </ol>
+                        <hr>
+                        <h6><a href="#">view more</a></h6>
+                        <hr>
+                  </div>
+                </div>
+              </div>
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                <h5>Subject</h5>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                <div class="accordion-body">
+                    <ol>
+                        {%if subj%}
+                        {% for s in subj %}
+                            <li class="mb-3">
+                                {{ s.subject_name}}
+                                <a href="/admin/subject/{{s.subject_id}}"><i class="fa fa-trash" ></i></a>
+                            </li>
+                        {% endfor %}
+                        {%else%}
+                        <h6>No data available</h6>
+                        {%endif%}
+                        </ol>
+                    <hr>
+                    <h6><a href="#">view more</a></h6>
+                    <hr>
+                </div>
+            </div>
+            </div>
+
+          </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block section%}
+
+{% endblock %}

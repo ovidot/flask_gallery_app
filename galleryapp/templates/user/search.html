@@ -1,0 +1,154 @@
+{%extends 'user/template.html'%}
+{%block body%}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 art-prof-ban"   style="">
+      <img src="{{url_for('static',filename='images/brush.jpg') }}" alt="artist _profile-banner" class="artist-prof-banner">
+    </div>
+  <div class="col-md-2 ps-4" >
+    <img src="{{url_for('static',filename='images/pix.jpg')}}" alt="profile picture" height="150" width ="150" class="artist_img ms-5">
+    <h3>NIKE art gal</h3>
+    <a href="https://www.flaticon.com/free-icons/nigeria" title="nigeria icons">Lagos,Nigeria</a>
+    <hr>
+    <h5>AWARDS</h5>
+    <h6>best kdgjkadg 2017</h6>
+    <h6>best kdgjkadg 2009</h6>
+    <h6>best kdgjkadg 2021</h6>
+    <h6><a href="#">view more</a></h6>
+    <hr>
+    <h5><a href="#" >bio </a></h5>
+    <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi minima in autem odio ut eum similique provident praesentium omnis quidem sint iure animi at voluptates, voluptas ea accusantium? Ullam, quia? </h6>
+    <h6><a href="#">view more</a></h6>
+    <hr>
+    <h5><a href="#">|| exhibitions</a></h5>
+    <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi minima in autem odio ut eum similique provident praesentium omnis quidem sint iure animi at voluptates, voluptas ea accusantium? Ullam, quia? </h6>
+  </div>
+  <div class="col-md-10">
+    <h3 class="pt-5 ms-5">EXHIBITS</h3>
+    <div class="row mt-5 artist-art-row">
+    <!-- Art Items -->
+    <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/4.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <span><a href="">Artist name</a></span>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+    <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/1.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+    <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/2.jpg')}}" alt="art item" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+    <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/3.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+     <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/5.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+     <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/6.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+     <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/7.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+     <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/12.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+     <!-- Art Items -->
+     <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='images/art/11.jpg')}}" alt="profile picture" height="300" width ="300" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>ART TITLE</h6></div>
+        <div class="col-md-5 "><h6>$1,000</h6></div>
+      </div>
+      <p>category, 45x90inches</p>
+    </div>
+    <div class="col-md-12" align="center"></div><button class="btn btn-info col-3">View all 200 artworks</button></div>
+  </div>
+  </div>
+</div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,73 @@
+{% extends 'admin/admin_template.html' %}
+{% block dashboard_header %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">All Products</h1>
+</div>
+{% endblock%}
+{% block content %}
+  <div class="col-md-9">
+
+  </div>
+  <div class="row">
+    <div class="col">
+            <div class="col-md-3 ps-md-4" >
+            <img src="{{url_for('static',filename='uploads/'+art.art_pix)}}" alt="profile picture" height="350rem" width ="350rem" class="studio-img mt-5 ms-0">
+            <hr>
+            <h6>{{art.art_title}}</h6>
+            <hr>
+            </div>
+            <form action="/admin/update_artstatus" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+                <p>
+                    <input type="hidden" name="art-id" value="{{art.art_id}}">
+                    <select name="status" class="form-select col-5" >
+                        <option value="1">Publish</option>
+                        <option value="0">Unpublish</option>
+                    </select>
+                </p>
+                <p><button class="btn btn-success">Send</button></p>
+            </form>
+            <div class="form-group row">
+
+                    <div class="col-md-5 mb-3">
+                        <label for=""> <h4>Title</h4></label>
+                        <input disabled type="text" value="{{art.art_title}}" name="title" class="form-control">
+                    </div>
+        
+                    <div class="col-md-7 mb-3">
+                        <label for=""> <h4>Artist FullName</h4></label>
+                        <input disabled type="text" value="{{art.artist_fullname}}" name="artist" class="form-control">
+                    </div>
+    
+                    <div class="col-md-5 mb-3">
+                        <label for=""> <h4>Category</h4></label>
+                        <input disabled type="text" value="{{cat.category_name}}" name="artist" class="form-control">
+                    </div>
+    
+                    <div class="col-md-7 mb-3">
+                        <label for=""> <h4>Art Medium</h4></label>
+                        <label for=""> <h4>Category</h4></label>
+                        <input disabled type="text" value="{{med.medium_name}}" name="artist" class="form-control">
+                    </div>
+    
+    
+                    <div class="col-md-5 mb-3">
+                        <label for=""> <h4>Arwork Year</h4></label>
+                        <input disabled type="text" value="{{art.art_year}}" name="year" class="form-control">
+                    </div>
+    
+    
+                    <hr>
+                    <h4>Dimension</h4>
+                    <div class="col-md-4 mt-2 mb-2">
+                        <label for=""> <h6>Dimension</h6></label>
+                        <input disabled type="text" value="{{art.art_dimension}}" name="dimension" placeholder="12 X 13 inches" class="form-control">
+                    </div>
+    
+</div>
+</div>
+{% endblock %}
+
+{% block section%}
+
+{% endblock %}

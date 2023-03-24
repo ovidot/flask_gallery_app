@@ -1,0 +1,79 @@
+{%extends 'user/template.html'%}
+{%block body%}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 art-prof-ban " align="center">
+      <h1 class="mt-5">My Profile</h1>
+      <h4 class="mt-2"></h4>
+    </div>
+  <div class="col-md-3 ps-4" >
+    {%if deets.user_pix != None %}
+    <img src="{{url_for('static',filename='/uploads/'+deets.user_pix)}}" alt="profile picture" height="250" width ="250" class="profile-img mt-5 ms-5">
+    {%else%}
+    <img src="{{url_for('static',filename='images/def_user.png')}}" alt="profile picture" height="250" width ="250" class="profile-img mt-5 ms-5">
+    {%endif%}
+    <h3 class="ms-5">{{deets.user_username}}</h3>
+    <a href="https://www.flaticon.com/free-icons/nigeria" title="nigeria icons"></a>
+    <button class="btn btn-dark col-12" ><a class="link-light" href="{{url_for('account')}}">Update profile</a></button>
+
+  </div>
+  <div class="col-md-9">
+    <h3 class="pt-5 ">Favorites</h3>
+    <div class="row mt-5 artist-art-row">
+      {%if fav != [] %}
+    <!-- Art Items -->
+    {% for f in fav %}
+
+    <div class="col-md-3" class="art-item">
+      <img src="{{url_for('static',filename='/uploads/'+f.art_ref.art_pix)}}" alt="profile picture" height="200" width ="200" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="/addfavorites/{{f.fav_artid}}/" >
+        <span style=" color: red;">
+          <i class="fa fa-heart fa-lg" ></i>
+        </span>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>{{f.art_ref.art_title}}</h6></div>
+        <div class="col-md-5 "><h6>${{f.art_ref.art_price}}</h6></div>
+      </div>
+      <p>{{f.art_ref.cat.category_name}}, {{f.art_ref.art_dimension}}</p>
+    </div>
+    {% endfor %}
+    <div>    <button class="btn btn-dark btn-sm col-6"><a class="link-light" href="/favorites">view all favorites</a></button></div>
+    {%else%}
+    <div class="col">
+      <h3> You have no favorites </h3>
+    </div>
+    {%endif%}
+  </div>
+    <hr>
+    <h3 class="pt-5 ">MY ARTWORKS</h3>
+    <div class="row mt-5 artist-art-row">
+      {%if myworks %}
+      {% for a in myworks %}
+    <!-- Art Items -->
+      <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='/uploads/'+a.art_pix)}}" alt="profile picture" height="300" width ="300" class="">
+        <div class="row">
+        <div class="col-md-7 mt-2"><h6>{{a.art_title}}</h6></div>
+        <div class="col-md-5 mt-2"><h6>${{a.art_price}}</h6></div>
+        </div>
+        <p>{{a.cat.category_name}}, {{a.art_dimension}}</p>
+      </div>
+    {% endfor %}
+    {% else %}
+    <div class="col">
+      <h3>You have no uploaded artworks yet</h3>
+    </div>
+    {% endif %}
+
+    </div>
+    <div class="col-md-12" align="center"></div><button class="btn btn-dark col-3">View all {{myworks|count}} artworks</button></div>
+  </div>
+  </div>
+</div>
+</div>
+
+{%endblock%}

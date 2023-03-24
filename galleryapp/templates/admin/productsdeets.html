@@ -1,0 +1,44 @@
+{% extends 'admin/admin_template.html' %}
+{% block dashboard_header %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">All Products</h1>
+</div>
+{% endblock%}
+{% block content %}
+  <div class="col-md-9">
+
+  </div>
+  <div class="row">
+    <div class="col">
+        <table class="table table-stripped bg-light text-black">
+            <thead>
+            <tr>
+                <th> S/N </th>
+                <th>Art image </th>
+                <th> Art Title </th>
+                <th>Art Price</th>
+                <th>Art category</th>
+                <th>uploaded by</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for  a in all_arts %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td> <img src="{{url_for('static',filename='/uploads/'+a.art_pix)}}" alt="profile picture" height="50" width ="50" class=""></td>
+                    <td>{{ a.art_title}}</td>
+                    <td>${{a.art_price}}</td>
+                    <td>{{ a.cat.category_name}}</td>
+                    <td>{{a.uploadedby.user_username}}</td>
+                    <td><a href="/admin/products/{{a.art_id}}">Edit</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block section%}
+
+{% endblock %}

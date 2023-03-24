@@ -1,0 +1,82 @@
+{%extends 'user/template.html'%}
+{%block body%}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 art-prof-ban"  >
+      <img src="{{url_for('static',filename='images/brush.jpg') }}" alt="artist _profile-banner" class="artist-prof-banner">
+    </div>
+  <div class="col-md-2 ps-4" >
+    <img src="{{url_for('static',filename='/uploads/'+p.art_pix)}}" alt="profile picture" height="150" width ="150" class="artist_img ms-5">
+    <h3>{{works[1].artist_fullname}}</h3>
+    <hr>
+    <h5><a href="#" >bio </a></h5>
+    <h6>{{works[1].uploadedby.user_bio[0:200]}}</h6>
+    <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      view more
+    </button>
+    <hr>
+    <h5><a href="#">|| exhibitions</a></h5>
+    <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi minima in autem odio ut eum similique provident praesentium omnis quidem sint iure animi at voluptates, voluptas ea accusantium? Ullam, quia? </h6>
+  </div>
+  <div class="col-md-10">
+    <h3 class="pt-5 ms-5">ARTWORKS</h3>
+    <div class="row mt-5 artist-art-row">
+      {% for i in works %}
+    <!-- Art Items -->
+    <div class="col-md-4" class="art-item">
+      <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image" height="300" width ="300" class="">
+      <p>
+        {%if i.art_availablestatus != '0' %}
+        <a href="/cart/{{i.art_id}}/"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" id="cart"  aria-controls="offcanvasExample"></a>
+        {%else%}
+        <small class="bg-primary border-success">sold!</small>
+        {% endif %}
+        {%if i.art_id in fav %}
+        <a href="/addfavorites/{{i.art_id}}/" id="fav" >
+            <span style=" color: rgb(255, 70, 70);">
+            <i class="fa fa-heart fa-lg" ></i>
+          </span>
+          </a>
+          {%else%}
+          <a href="/addfavorites/{{i.art_id}}/" id="fav" >
+            <span style=" color: rgb(0, 0, 0);">
+            <i class="fa fa-heart fa-lg" ></i>
+          </span>
+          </a>
+          {% endif %}
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>{{i.art_title}}</h6></div>
+        <div class="col-md-5 "><h6>${{i.art_price}}</h6></div>
+      </div>
+      <span><a href="/artist/{{i.upload_userid}}/">{{i.artist_fullname}}</a></span>
+      <p>{{i.cat.category_name}}<span>,{{i.art_dimension}}</span></p>
+    </div>
+    {%endfor%}
+    <div class="col-md-12" align="center"></div><button class="btn btn-dark col-3">View all {{works|count}} artworks</button></div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">BIO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <b>{{works[1].uploadedby.user_bio}}</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{%endblock%}

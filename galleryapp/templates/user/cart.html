@@ -1,0 +1,50 @@
+{%extends 'user/template.html'%}
+{%block body%}
+
+<div class="container-fluid cart">
+  <div class="row">
+    <div class="col-md-12 art-prof-ban " align="center">
+      <h1 class="mt-5">Your Cart</h1>
+    </div>
+  </div>
+
+  <div class="row  mt-3">
+    <div class="col-md-6 offset-1 " style="background-color: #ffff;">
+    {% for c in cart_items %}
+  <div class="col-md-11 offset-1 mt-5 pt-3" style="background-color: #ffff;justify-content:space-evenly;display:flex;">
+    <div class="col-2">
+      <img src="{{url_for('static',filename='/uploads/'+c.cart_art.art_pix)}}" width="120" height="120" alt="cart item image">
+    </div>
+    <div style="display: grid;">
+      <span>{{c.cart_art.art_title}}</span>
+        <span>{{c.cart_art.artist_fullname}}</span>
+        <span>{{c.cart_art.cat.category_name}}</span>
+    </div>
+        <span>${{c.cart_itemprice}}</span>
+        <div class="col-1"> <a href="/del/{{c.cart_id}}/" type="botton" ><i class="fa fa-solid fa-trash"></i></a></div>
+        <hr>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-md-4 ms-5 mt-5 fixed-top " style="background-color: #ffff;" id="cart-checkout" >
+      <h4 class="col-5 pt-3 ms-2">Estimated Total</h4>
+      {% if cart_total[0] %}
+      <h4 class="col-12 align-items-right pt-3 ms-2">${{cart_total[0]}}</h4>
+      {%else%}
+      <h4 class="col-12 align-items-right pt-3 ms-2">$0</h4>
+      {%endif%}
+      <div>
+        {% if cart_total[0] %}
+        <button class="btn btn-success col-5 btn-lg"> <a href="/checkout" style="color:black"><b> Check-Out</b></a></button>
+        {%else%}
+        {%endif%}
+        <button class="btn btn-dark col-6 btn-lg"> <a href="/allworks/1" style="color:black"><b> Keep Shoping</b></a></button>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+{%endblock%}

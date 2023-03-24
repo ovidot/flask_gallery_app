@@ -1,0 +1,78 @@
+{% extends 'user/account_template.html'%}
+
+{%block content%}
+<div class="row">
+    {% with messages=get_flashed_messages()%}
+      {%if messages %}
+      {% for m in messages %}
+        <div class="alert alert-info">{{m}}</div>
+        {% endfor %}
+        {% endif %}
+      {%endwith%}
+    <div class="col">
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+            <div class="col-md-3 ps-4" >
+            <img src="{{url_for('static',filename='uploads/'+art.art_pix)}}" alt="profile picture" height="200rem" width ="200rem" class="studio-img mt-5 ms-0">
+            <hr>
+            <h6>{{art.art_title}}</h6>
+            <hr>
+            </div>
+            <div class="form-group row">
+             
+               
+                    <div class="col-md-5 mb-3">
+                        <label for=""> <h4>Title</h4></label>
+                        <input type="text" value="{{art.art_title}}" name="title" class="form-control">
+                    </div>
+        
+                    <div class="col-md-7 mb-3">
+                        <label for=""> <h4>Artist FullName</h4></label>
+                        <input type="text" value="{{art.artist_fullname}}" name="artist" class="form-control">
+                    </div>
+    
+                    <div class="col-md-5 mb-3">
+                        <select name="catid" class="form-select form-select-lg mb-3">
+                            <option selected value=""> Select a Category</option>
+                            {%for c in category%}
+                            <option value="{{c.category_id}}">{{c.category_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+    
+                    <div class="col-md-7 mb-3">
+                        <label for=""> <h4>Art Medium</h4></label>
+                        <input name="medium" type="text" placeholder="fill in here the materials used for this artwork" class="form-control">
+                    </div>
+    
+    
+                    <div class="col-md-5 mb-3">
+                        <label for=""> <h4>Arwork Year</h4></label>
+                        <input type="text" value="{{art.art_year}}" name="year" class="form-control">
+                    </div>
+    
+    
+                    <hr>
+                    <h4>Dimension</h4>
+                    <div class="col-md-4 mt-2 mb-2">
+                        <label for=""> <h6>Dimension</h6></label>
+                        <input type="text" value="{{art.art_dimension}}" name="dimension" placeholder="12 X 13 inches" class="form-control">
+                    </div>
+    
+    
+                    <div class="form-group row">
+                        <label class=" mb-3">Select file </label>
+                        <div>
+                            <input class="btn btn-dark col-4 mb-3" type="file" name="pix">
+                        </div>
+                        </div>
+                        <div class="form-floating" align="center">
+                            <button class="w-50 btn btn-dark" type="submit">Update</button>
+                        </div>
+
+        </form>
+</div>
+
+ 
+
+{%endblock%}

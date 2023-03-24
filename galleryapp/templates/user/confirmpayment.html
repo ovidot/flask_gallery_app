@@ -1,0 +1,43 @@
+{%extends 'user/template.html'%}
+{%block navcontent%}
+<div class="col-md-10 mt-2 art-prof-ban " align="center" style="height: 100px;">
+  <h1 class="mt-3">Payment</h1>
+</div>
+{%endblock%}
+{%block body%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-4 mt-5">
+            <form id="paymentForm" action="/confirm" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+                <div class="form-group row mb-3">
+                    <div class="col-3"><label for="email">Email Address</label></div>
+                    <div class="col-7"><input class="form-control" type="email" value="{{email}}" disabled id="email-address" required /></div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col-3"><label for="amount">Amount</label></div>
+                    <div class="col-7"><input class="form-control" type="tel" value="{{amt}}" id="amount" required disabled /></div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col-3"><label for="first-name">UserName</label></div>
+                    <div class="col-7"><input class="form-control" type="text" value="{{user.user_username}}" disabled id="first-name" /></div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col-3"><label for="last-name">ref-no</label></div>
+                    <div class="col-7"><input class="form-control" type="text" value="{{refno}}" id="last-name" disabled/></div>
+                </div>
+                <div class="form-submit mb-3">
+                  <button class="btn btn-dark col-5" type="submit" > Pay </button>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{%endblock%}
+
+  {%block footer1%}
+
+  {%endblock%}

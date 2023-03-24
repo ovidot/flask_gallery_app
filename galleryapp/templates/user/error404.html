@@ -1,0 +1,52 @@
+{%extends 'user/template.html'%}
+
+{% block css%}
+<style type="text/css">
+    .error-txt{
+        color:red;
+        font-family:cursive;
+        font-weight: bolder;
+    }
+
+    .error-txtd{
+        margin-top: 100px;
+    }
+
+    img{
+        height: 100%;
+        width: 100%;
+    }
+</style>
+{% endblock%}
+{%block navtop%}
+<!--Navigation bar-->
+{%endblock%}
+
+
+{% block navcontent%}
+
+
+{%endblock%}
+
+{%block body%}
+<div class="col-md-4 mt-5 ps-5 pt-5 error-txtd" align="center">
+    <div class="col-md-5">
+        <a class="navbar-brand" href="{{url_for('home')}}">
+            <img src="{{url_for('static',filename='images/7.png')}}" width=150px; height=150px;>
+          </a>
+        </div>
+    <h4 class="error-txtd">The page you are trying to access doesn’t exist or has been moved.
+        Try going back to our homepage.</h4>
+        <a href="{{url_for('home')}}"><button class="btn btn-info">Go to homepage</button></a>
+</div>
+<div class="col-md-8">
+<img src="{{url_for('static',filename='images/404error.jpg')}}" alt="error image">
+</div>
+<div class="col md-10">
+    <h3 class="error-txt">{{error}}</h3>    
+</div>
+
+
+{%endblock%}
+{%block footer1%}{%endblock%}
+{%block footer2%}{%endblock%}

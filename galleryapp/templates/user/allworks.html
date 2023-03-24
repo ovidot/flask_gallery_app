@@ -1,0 +1,93 @@
+{%extends 'user/allworks_template.html'%}
+{%block artbody%}
+<div class="col-md-9" id="fil">
+  {% with messages=get_flashed_messages()%}
+  {%if messages %}
+  {% for m in messages %}
+    <div class="alert alert-success">{{m}}</div>
+    {% endfor %}
+    {% endif %}
+    {%endwith%}
+  <div class="row mt-5 artist-art-row">
+    {% for i in all_art %}
+  <!-- Art Items class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" -->
+  <div class="col-md-4" class="art-item" id="art-itm">
+  <a href="/proddeets/{{i.art_id}}/"> <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image"  class="w-75 h-55"></a>
+    <p>
+      {%if i.art_availablestatus != '0' %}
+    <a href="/cart/{{i.art_id}}/"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" id="cart"  aria-controls="offcanvasExample"></a>
+    {%else%}
+    <small class="bg-primary border-success">sold!</small>
+    {% endif %}
+
+    {%if i.art_id in fav %}
+    <a href="/addfavorites/{{i.art_id}}/" id="fav" >
+        <span style=" color: rgb(255, 70, 70);">
+        <i class="fa fa-heart fa-lg" ></i>
+      </span>
+      </a>
+      {%else%}
+      <a href="/addfavorites/{{i.art_id}}/" id="fav" >
+        <span style=" color: rgb(0, 0, 0);">
+        <i class="fa fa-heart fa-lg" ></i>
+      </span>
+      </a>
+      {% endif %}
+    <div class="col">
+      <div class="col-md-7"><h6>{{i.art_title}}</h6></div>
+      <div class="col-md-5 "><h6>${{i.art_price}}</h6></div>
+    </div>
+    <span><a href="/artist/{{i.upload_userid}}/">{{i.artist_fullname}}</a></span>
+    <p>{{i.cat.category_name}}<span>,{{i.art_dimension}}</span></p>
+  </div>
+  {%endfor%}
+
+  <!-- <div class="col-md-12" align="center"></div><button class="btn btn-info col-3">View all {{all_arts|count}} artworks</button>-->
+</div> 
+</div>
+<hr>
+<div class="col-md-12 my-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% if all_art.has_prev %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for('browse_all', page_num=all_art.prev_num) }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {%endif%}
+      {% for page in all_art.iter_pages(left_edge=3, right_edge=5) %}
+      {% if page %}
+      <li class="page-item"><a class="page-link" href="{{url_for('browse_all', page_num=page)}}">{{page}}</a></li>
+      {%else%}
+      <li class="page-item disabled"><a class="page-link" href="#"></a></li>
+      {%endif%}
+      {%endfor%}
+
+      {% if all_art.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for('browse_all', page_num=all_art.next_num) }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      {%endif%}
+    </ul>
+  </nav>
+</div>
+  {%endblock%}

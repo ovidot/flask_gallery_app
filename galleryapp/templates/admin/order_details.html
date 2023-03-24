@@ -1,0 +1,43 @@
+{% extends 'admin/admin_template.html' %}
+{% block dashboard_header %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">ORDER DETAILS</h1>
+</div>
+{% endblock%}
+{% block content %}
+  <div class="col-md-9">
+
+<div class="row">
+    <div class="col">
+        <table class="table table-stripped bg-light text-black">
+            <thead>
+            <tr>
+                <th> S/N </th>
+                <th></th>
+                <th>Order id </th>
+                <th> Username </th>
+                <th>item amt</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for  o in order_deet %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td><a href="/proddeets/{{o.orderdetails_artid}}/"> <img src="{{url_for('static',filename='/uploads/'+o.art.art_pix)}}" alt="product image" height="50" width ="50" class=""></a></td>
+                    <td>{{o.the_order.order_id}}</td>
+                    <td>{{ o.the_order.orderby.user_username}}</td>
+                    <td>${{o.art.art_price}}</td>
+                    <td>{{ o.the_order.order_date}}</td>
+                    <td><a href="{{url_for('manage_orders')}}">all orders</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block section%}
+
+{% endblock %}

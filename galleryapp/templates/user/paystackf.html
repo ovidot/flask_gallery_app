@@ -1,0 +1,28 @@
+{%extends 'user/template.html'%}
+
+{%block body%}
+
+<div class="container">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6 ms-5 mt-5 bg-primary" align="center" >
+      <h4>Dear <b>{{deets.user_username}}</b>, 
+        <h4>
+            We regret to inform you that your recent payment for [{{rspjson['data']['amount']}}] has failed to process due to [{{rspjson['message']}}].</h4>
+
+        <h4>We kindly request that you check with your bank or financial institution to resolve any potential issues with your payment method, such as insufficient funds, expired credit card, or incorrect billing information.</h4>
+
+
+        <h4>Once the issue is resolved, please visit our website to make a new payment. Alternatively, you may contact our customer service team at [ovidotfinance@gmail.com] for assistance in resolving the payment issue.</h4>
+
+        <h4>We apologize for any inconvenience this may have caused and thank you for your understanding.</h4>
+
+        <h4> Best regards,
+          [Ovidot's]</h4>
+        </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+{%endblock%}

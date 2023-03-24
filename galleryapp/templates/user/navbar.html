@@ -1,0 +1,77 @@
+  <!--Navigation bar-->
+  <div class="container-fluid" id="nav-container">
+    <div class="row">
+      <div class="col-md-2">
+        <a class="navbar-brand" href="{{url_for('home')}}">
+          <img src="{{url_for('static',filename='images/7.png')}}" width=150px; height=100px;>
+        </a>
+      </div>
+      <div class="col-md-10  mt-2 " align=right>
+        <a href="{{url_for('login_user')}}">Login</a><span>//</span>
+        <a href="{{url_for('signup_user')}}">Register</a>
+        <img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        <img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon">
+        <img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon">
+        <!--BS Navigation bar start-->
+        <nav class="navbar navbar-expand-lg" style="background-color:white; border-radius:20px;">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="Index.html">
+              <!-- <img src="images/7.png" width=150px; height=100px;> -->
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="row">
+  <div class="col">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="Index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="art.html">Artists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Galleries</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+              </a>
+              <ul class="dropdown-menu" style="background-color:white;">
+                <li><a class="dropdown-item" href="#">photography</a></li>
+                <li><a class="dropdown-item" href="#"> Sculpture</a></li>
+                <li><a class="dropdown-item" href="#">Portrait</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Oil</a></li>
+                <li><a class="dropdown-item" href="#">Acrylic</a></li>
+                <li><a class="dropdown-item" href="#">Watercolor</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu" style="background-color:white;">
+                <li><a class="dropdown-item" href="#">Become a seller</a></li>
+                <li><a class="dropdown-item" href="#">Find a Gallery</a></li>
+                <li><a class="dropdown-item" href="#">Mentorship</a></li>
+                <li><a class="dropdown-item" href="#">Commissioned art</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="market.html">Market</a>
+            </li>
+          </ul>
+          <input type="text" placeholder="What are you looking for?" class="form-control">
+        </div>
+  </div>
+</div>
+
+</div>
+      </nav>
+      <!--BS Navigation bar end-->
+      </div>
+    </div>
+  </div>
+  <!--Nav ends-->

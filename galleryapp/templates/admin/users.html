@@ -1,0 +1,40 @@
+{% extends 'admin/admin_template.html' %}
+{% block dashboard_header %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Manage Users</h1>
+</div>
+{% endblock%}
+{% block content %}
+  <div class="col-md-9">
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <table class="table table-stripped bg-light text-black">
+            <thead>
+            <tr>
+                <th> S/N </th>
+                <th>Username</th>
+                <th> User Fullname </th>
+                <th> User Lastname </th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{ u.user_username }}</td>
+                    <td>{{ u.user_fname }} {{ u.user_lname}}</td>
+                    <td><a href="">Manage</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block section%}
+
+{% endblock %}

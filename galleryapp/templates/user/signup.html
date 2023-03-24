@@ -1,0 +1,276 @@
+{%extends 'user/template.html'%}
+{%block navtop%}
+{%endblock%}
+{%block navcontent%}
+
+{%endblock%}
+
+{%block body%}
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 ms-5 mt-5 " align="center" id="signup-img">
+      </div>
+      <div class="col-md-4 offset-1 mt-3" align="left">
+            <div class="col-md-2 mb-3" >
+              <a class="navbar-brand" href="{{url_for('home')}}">
+                  <img src="{{url_for('static',filename='images/7.png')}}" width=150px; height=100px;>
+                </a>
+            </div>
+        <h4>create an account</h4>
+        <p id="validate" ></p>
+        {% with messages=get_flashed_messages()%}
+        {%if messages %}
+        {% for m in messages %}
+          <div class="alert alert-success" id="flash">{{m}}</div>
+          {% endfor %}
+          {% endif %}
+        {%endwith%}
+        <div class="col-md-12">
+
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+
+              <div class="form-group mx-auto row mb-3">
+                <label class="col"></label>
+                <div class="col-md-12">
+                <input id="uname" type="text" name="username"  placeholder="Username" class="form-control border-success form-control-lg">
+                <p class="" id="uname-p"></p>
+                </div>
+              </div>
+
+            <div class="form-group row mx-auto mb-3">
+                <label class="col"></label>
+                <div class="col-md-12">
+                <input type="text" id="fname" name="fname"  placeholder="Firstname" class="form-control border-success form-control-lg">
+                </div>
+            </div>
+
+            <div class="form-group mx-auto row mb-3">
+              <label class="col"></label>
+              <div class="col-md-12">
+              <input type="text" id="lname" name="lname"  placeholder="Lastname" class="form-control border-success form-control-lg">
+              </div>
+            </div>
+
+            <div class="form-group mx-auto row mb-3">
+              <label class="col"></label>
+              <div class="col-md-12">
+              <input type="text" id="email" name="email"  placeholder="email address" class="form-control border-success form-control-lg">
+              <p id="email" ></p>
+              </div>
+            </div>
+
+            <div class="form-group mx-auto row mb-3">
+              <label class="col"></label>
+              <div class="col-md-12">
+              <input type="text" id="phone" name="phone"  placeholder="Phone:08012345678 or +2348023456789" class="form-control border-success form-control-lg">
+              <p id="phone" ></p>
+              </div>
+            </div>
+
+            <div class="form-group mx-auto row mb-3">
+              <label class="col"></label>
+              <div class="col-md-12">
+              <input type="password" id="pwd" name="password"  placeholder="Password" class="form-control border-success form-control-lg">
+              <p id="pwd"></p>
+              </div>
+            </div>
+
+            <div class="form-group mx-auto row mb-3">
+              <label class="col"></label>
+              <div class="col-md-12">
+              <input type="password" id="c-pwd" name="chk-password" disabled placeholder="confirm Password" class="form-control border-success form-control-lg">
+              <p id="c-pwd"></p>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <button type="submit" id="btn" class="btn btn-success form-control" >Register</button>
+            </div>
+            <hr>
+            <div class="col-md-12 ">
+              <span>already have an account? </span><a href="{{url_for('user_login')}}" class="form-linkout">Sign-in now</a>
+            </div>
+
+      </div>
+  </div>
+</div>
+
+{%endblock%}
+{%block footer1%}
+
+{%endblock%}
+{%block footer2%}
+
+{%endblock%}
+
+{%block javascript%}
+<script>
+
+  $(document).ready(function(){
+      $('#email').on('keyup change', () =>{
+        function isValidEmail(a){
+        // Regular expression pattern to match an email address
+        var pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        // Use the test() method of the RegExp object to check if the email address matches the pattern
+        if (pattern.test(a)) {
+            return true;
+        } else {
+            return false;
+        }
+      }
+      var em = $('#email').val()
+      $('p#email').removeClass('text-success text-danger')
+      if (isValidEmail(em)) {
+        var em = em
+        $('p#email').html('Email is valid').addClass('text-success')
+    } else {
+        $('p#email').html('Please enter a Valid email address').addClass('text-danger')
+    }
+    const ui =$('#email');
+        var email = ui.val()
+        var csrf = "{{csrf_token()}}"
+        var data2send = {
+          "email":email,
+          "csrf_token":csrf}
+
+    $.ajax({
+      url:'/check_email',
+      method:'POST',
+      data:data2send,
+      success:function(data){
+        if (data == 'True'){
+          $('p#email').html('Email already registered').addClass('text-danger')
+        }else{
+        }
+      },
+      error:function(e){
+        console.log(e)
+      }
+    })
+    })
+
+      $('#phone').on('keyup change',() => {
+        function isValidPhoneNumber(number) {
+          const pattern1 = /^\+234\d{10}$/;
+          const pattern = /^\d{3}\d{3}\d{5}$/; // define the pattern for phone number
+          if (pattern.test(number) || pattern1.test(number)){
+            return true
+          }else{
+            return false
+          }
+        }
+        var ph = $('#phone').val()
+        $('p#phone').removeClass('text-success text-danger')
+        if (isValidPhoneNumber(ph)) {
+          $('p#phone').html('valid').addClass('text-success')
+        } else {
+          $('p#phone').html('Please enter a Valid phone number in format: xxx-xxx-xxxx ').addClass('text-danger')
+        }
+      })
+
+      $('#uname').on('keyup change', () => {
+        const ui =$('#uname');
+        var uname = ui.val()
+        var csrf = "{{csrf_token()}}"
+        var data2send = {
+          "uname":uname,
+          "csrf_token":csrf}
+
+        $.ajax({
+          url:'/check_username',
+          method:'POST',
+          data:data2send,
+          success:function(data){
+            $('#uname-p').removeClass('text-success text-danger')
+            if (data == 'True'){
+              $('#uname-p').html('Username already exists').addClass('text-danger')
+            }else{
+              $('#uname-p').html('Username valid').addClass('text-success')
+            }
+          },
+          error:function(e){
+            console.log(e)
+          }
+        })
+
+      })
+
+      $('#pwd').on('keyup change', () => {
+        function isValidPassword(password){
+          const regexPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/;
+          if (regexPattern.test(password)){
+            return true
+          }else{
+            return false
+          }
+        }
+
+        var pwd = $('#pwd').val()
+        $('p#pwd').removeClass('text-success text-danger')
+        if (isValidPassword(pwd)) {
+          $('p#pwd').html('password good').addClass('text-success')
+          $('#c-pwd').removeAttr('disabled')
+        } else {
+          $('p#pwd').html(`At least 8 characters long
+          Contains at least one uppercase letter
+          Contains at least one lowercase letter
+          Contains at least one digit (number)
+          May contain any of the following special characters: @$!%*#?&`).addClass('text-danger');
+        }
+      })
+
+      $('#c-pwd').on('keyup change', () => {
+        var pwd = $('#pwd').val()
+        var cpwd = $('#c-pwd').val()
+        $('p#c-pwd').removeClass('text-success text-danger')
+        if(cpwd == pwd){
+          $('p#c-pwd').html('passwords confirmed').addClass('text-success')
+        }else{
+          $('p#c-pwd').html('wrong password').addClass('text-danger')
+        }
+      })
+
+      $('#btn').click(function(){
+        var uname = $('#uname').val()
+        var fname = $('#fname').val()
+        var lname = $('#lname').val()
+        var email = $('#email').val()
+        var phone = $('#phone').val()
+        var pwd = $('#pwd').val()
+        var cpwd = $('#c-pwd').val()
+        var csrf = "{{csrf_token()}}"
+        var data2send = {
+          "username":uname,
+          "fname":fname,
+          "lname":lname,
+          "email":email,
+          "phone":phone,
+          "password":pwd,
+          "chk-password":cpwd,
+          "csrf_token":csrf
+        }
+
+        $.ajax({
+          url:'/signup',
+          data:data2send,
+          type:'post',
+          success:function(rsp){
+            console.log(rsp)
+            if(rsp.redirect){
+              window.location.href = rsp.redirect;
+              m='{{get_flashed_messages()}}'
+              $('#flash').html(m)
+            }else{
+              $('#uname').html(rsp)
+            }
+           },
+           error:function(e){
+             console.log(e)
+             $('#validate').html('please validate all feilds to register').addClass('alert alert-danger')
+           }
+        })
+      })
+    })
+
+</script>
+{%endblock%}

@@ -1,0 +1,26 @@
+{%extends 'user/template.html'%}
+
+{%block body%}
+
+<div class="container">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6 ms-5 mt-5 bg-success" align="center" >
+      <h4>Dear <b>{{deets.user_username}}</b>, 
+        <h4>We are pleased to confirm that we have received your payment of [{{rspjson['data']['amount']}}] for your recent order [{{refid}}].</h4>
+
+        <h4>Your payment has been successfully processed and your order is now being prepared for shipment. We will notify you once your order has been dispatched and provide you with the tracking information.</h4>
+
+        <h4>If you have any questions or concerns regarding your order or payment, please do not hesitate to contact us at [ovidotfinance@gmail.com].</h4>
+
+        <h4> Thank you for shopping with us.</h4>
+
+        <h4> Best regards,
+          [Ovidot's]</h4>
+        </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+{%endblock%}

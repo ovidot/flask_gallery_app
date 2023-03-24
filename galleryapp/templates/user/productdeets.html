@@ -1,0 +1,161 @@
+{% extends 'user/template.html'%}
+
+{%block body%}
+<div class="container-fluid">
+    <div class="container">
+    <div class="row">
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{'/'}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{'/allworks/1'}}">Browse</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Art</li>
+            </ol>
+          </nav>
+        <div class="col-md-6" align="right">
+        <img src="{{url_for('static',filename='/uploads/'+art.art_pix)}}" alt="" height="500" width="500">
+        </div>
+        <div class="col-md-6 ">
+            <div class="mt-3">
+                <h1>{{art.art_title}}</h1>
+            </div>
+            <div>
+                <h4>By:<a href="/artist/{{art.upload_userid}}/">{{art.artist_fullname}}</a></h4>
+            </div>
+            <div class="ms-4 mt-1">
+                <h5><b> US $1500 </b></h5>
+            </div>
+            <div class="mt-4">
+                {%if art.art_availablestatus != '0' %}
+                <button class="btn btn-dark col-10"> <a href="/cart/{{art.art_id}}/" class="link-light"></a> Add to Cart</button>
+                {%else%}
+                <button class="btn btn-dark col-10"> <a class="link-light" href="#"></a>SOLD!</button>
+                {%endif%}
+            </div>
+            <div class="mt-2">
+                <h6>OVERVIEW</h6>
+                <p>{{art.art_year}}</p>
+                <p>{{art.cat.category_name}}</p>
+                <p>Suitable for Indoor Use</p>
+                <p>Original/Unique</p>
+                <p><b>Dimension:</b>{{art.art_dimension}}</p>
+                <p class="alert-xs alert-danger col-10">Note: Actual colours may vary due to photography & computer settings.</p>
+                <hr>
+                <h6><b>SHIPPING</b></h6>
+                <p>This item Ships from Nigeria</p>
+                <p>Please note that this item requires crating for shipment</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Buy with confidence -->
+    <div class="row ">
+        <div class="col-md-12 mb-5" align="center">
+            <b>  Buy With Confidence </b>
+            <i type="button" data-toggle="modal" data-target="#exampleModalLong" class="fa fa-info-circle" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-4" align="center">
+            <div align="center"><i class="fa-solid fa-image fa-6x"></i></div>
+           <div class="col-5" align="center"> Collect from reputable artists and galleries</div>
+        </div>
+        <div class="col-md-4" align="center">
+            <div align="center"><i class="fa-solid fa-truck-fast fa-6x"></i></div>
+           <div class="col-5" align="center">  Ships securely to your door</div>
+        </div>
+        <div class="col-md-4" align="center">
+            <div align="center"><i class="fas fa-file-signature fa-6x"></i></div>
+           <div class="col-6" align="center">  Certificates of Authenticity with each artwork</div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12 mt-2 mb-3"><h3>More From {{art.artist_fullname}}</h3></div>
+        <hr>
+        
+        {% for i in works %}
+    <!-- Art Items -->
+    <div class="col-md-3" class="art-item">
+    <a href="/proddeets/{{i.art_id}}/"> <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image" height="200" width ="200" class=""></a>
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon" class="art-lnk"></a>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row" align="left">
+        <div class="col-md-5"><h6>{{i.art_title}}</h6></div>
+        <div class="col-md-2 "><h6>{{i.art_pricee}}</h6></div>
+      </div>
+      <span><a href="/artist/{{i.upload_userid}}/">{{i.artist_fullname}}</a></span>
+      <p>{{i.cat.category_name}}<span>,{{i.art_dimension}}</span></p>
+    </div>
+
+    {%endfor%}
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle"></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h3>Buy with Confidence</h3>
+            <p class="mt-3">The Artling prides itself on helping art lovers and collectors source art easily from reputable artists and galleries. Send us a message - or live chat with one of our Online Art Consultants if you have any questions.</p>
+
+            <h3>AUTHENTICITY</h3>
+            <ul>
+                <li>Certificates of Authenticity signed by the Artist and/or the Gallery are attached with every art work. The Artling team personally researches all of the galleries and artists featured on the site.</li>
+                <br>
+                <li>
+                    Membership of The Artling is by invitation only, ensuring that artworks on our site are from reputable sources.
+                </li>
+            </ul>
+            <h3>SECURITY</h3>
+            <ul>
+                <li>All Credit Card transactions are processed through Stripe’s secure SSL technology which keeps your credit card details safe.</li>
+                <br>
+                <li>
+                    Bank Transfers are also accepted - these are protected by the banks themselves.
+                </li>
+            </ul>
+            <h3>SHIPPING</h3>
+            <ul>
+                <li>International shipping is available. Please contact us if you don’t see your Country listed.</li>
+                <br>
+                <li>
+                    We will provide you with the Tracking Number so you can follow the progress of your art work until it reaches its destination. Our team will be on hand to assist and keep you updated every step of the way.
+
+                </li>
+            </ul>
+            <h3>INSURANCE
+            </h3>
+            <ul>
+                <li>Shipping of artworks purchased from The Artling is through recognized international couriers (such as DHL, UPS & FedEx) or professional art handlers.</li>
+                <br>
+                <li>
+                    Insurance is included in the shipping cost stated at checkout.
+                </li>
+            </ul>
+            <hr>
+            <h3>TERMS OF USE</h3>
+            <ul>
+                <li>When you place an order with us, you agree to our Terms of Use which are designed to keep everything simple and hassle-free.</li>
+                <br>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

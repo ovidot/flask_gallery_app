@@ -1,0 +1,248 @@
+/* *{
+  min-height: 60px;
+  border: 1px solid red;
+} */
+/* div{
+ border: 1px solid black ;
+} */
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  background-color: white!important;
+}
+/*Login page css*/
+.login-bg{
+  background-image: linear-gradient(rgba(37, 146, 193, 0.5), rgba(177, 35, 172, 0.5)),url("../images/art/3.jpg");
+  background-size:cover;
+  height: 800px;
+  border-radius:20px ;
+}
+.lgform-bg{
+  background:linear-gradient(rgba(37, 146, 193, 0.223), rgba(177, 35, 172, 0.379));
+  border-radius: 20px;
+  height: 500px;
+  box-shadow:5px 5px 5px 5px #333;
+  color: white;
+
+}
+.lgform-txt{
+  color: white;
+  font-size:medium;
+}
+.profile-img{
+    border-radius:100%;
+    border:3px solid black;
+  }
+/*Home page css*/
+.heading{
+  font-family: cursive;
+  font-size: 4em;
+  font-weight: bolder;
+}
+
+.sgnup-btn {
+  background-color: #A2A6F8 !important;
+  font-weight:700 !important;
+  font-size:32px !important;
+  font-family:cursive;
+
+}
+
+#cat-1{
+  font-size: 10rem;
+  font-weight:bolder;
+}
+.cat-1img{
+  height: 500px;
+}
+.cat-1txt{
+  background-color:bisque;
+  height: 500px;
+  color: black;
+  font-family: cursive;
+  font-weight: bolder;
+}
+
+.cat-1img img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  filter: brightness(50%);
+}
+
+.sub-heading{
+  font-family: rubik;
+  font-size: 1.2rem;
+}
+/* .modal-content {
+  margin: auto !important;
+  width: 800px !important;
+} */
+
+.su-img {
+  position: relative;
+  top: 100px;
+}
+#sub-1{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 3rem;
+  font-weight:bolder;
+  background-color: white;
+  color: black;
+  width: 100%;
+}
+
+.form-linkout{
+  text-decoration:none;
+  color:black;
+}
+
+.form-linkout:hover{
+  text-decoration:underline;
+  color:green;
+}
+/* #login-img {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("../images/art/4.jpg");
+} */
+#signup-img {
+  background-image: linear-gradient(rgba(225, 222, 18, 0.5), rgba(15, 135, 215, 0.5)),url("../images/art/4.jpg");
+  height: 750px ;
+  box-shadow:3px 3px 15px 5px #333;
+}
+
+.lnd-row{
+    display: flex;
+    justify-content: center;
+}
+
+.lnd-pge {
+  background-color:black;
+  height: 500px;
+  color: white;
+  font-family: cursive;
+  font-weight: bolder;
+}
+
+
+.carousel-img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.lnd-pge1 {
+  height: 500px;
+  background-color: white;
+}
+
+
+
+
+.nav-link {
+  text-decoration: none;
+  color: black !important;
+  font-family: cursive;
+  font-weight: bolder;
+}
+
+.dropdown-item {
+  text-decoration: none;
+  color: black !important;
+  font-family: cursive;
+  font-weight: bolder;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+/*    ART page style*/
+#art_text {
+  font-size: 40px !important;
+  font-family: cursive;
+}
+
+/* Artist page styling */
+.artist_img{
+  border-radius:100%;
+  position: relative;
+  bottom: 25px;
+  border:3px solid black;
+}
+.art-prof-ban{
+  background-image:linear-gradient(rgba(15, 20, 29, 0.331), rgba(15, 135, 215, 0.5)),url("../images/pix.jpg");;
+  background-color:antiquewhite;
+  height:200px;
+  width:100%;
+  color: white;
+}
+.cart-prof-ban{
+  background-image:linear-gradient(rgba(15, 20, 29, 0.331), rgba(15, 135, 215, 0.5)),url("../images/pix.jpg");;
+  height:100px;
+  width:100%;
+  color: white;
+}
+.artist-prof-banner{
+  height:inherit;
+  width:100%;
+  object-fit:cover;
+}
+/* Artworks Display */
+.art-item{
+  border: 1px solid black;
+}
+.artist-art-row{
+  justify-content: space-around;
+}
+.art-lnk{
+  height: 20px;
+  width: 20px;
+}
+
+.art-lnk:hover{
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  border-radius: 5px;
+}
+
+/* GALLERY STYLE */
+.gallery-prof-banner{
+  height:350px;
+  width:100%;
+  object-fit:cover;
+  filter:brightness(50%)
+}
+
+/* CART CSS */
+.cart{
+  background-color: #F9F9F9;
+  justify-content: space-evenly;
+}
+
+#cart-checkout{
+  position:sticky;
+  top: 20px;
+}
+.size{
+  width:280px;
+  height:300px;
+}
+.offcanvas-size-xl {
+  --bs-offcanvas-width: min(95vw, 600px) !important;
+}
+.offcanvas-size-xxl {
+  --bs-offcanvas-width: min(95vw, 90vw) !important;
+}
+.offcanvas-size-md { /* add Responsivenes to default offcanvas */
+  --bs-offcanvas-width: min(95vw, 400px) !important;
+}
+.offcanvas-size-sm {
+  --bs-offcanvas-width: min(95vw, 250px) !important;
+}

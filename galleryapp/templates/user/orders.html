@@ -1,0 +1,42 @@
+{% extends 'user/account_template.html'%}
+
+{%block content%}
+{% with messages=get_flashed_messages()%}
+{%if messages %}
+{% for m in messages %}
+  <div>{{m|safe}}</div>
+  {% endfor %}
+  {% endif %}
+{%endwith%}
+
+<div class="row">
+    <div class="col">
+        <table class="table table-stripped bg-light text-black">
+            <thead>
+            <tr>
+                <th> S/N </th>
+                <th>Order id </th>
+                <th> Username </th>
+                <th>Order Total</th>
+                <th>Order Date</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for  o in all_orders %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{o.order_id}}</td>
+                    <td>{{ o.orderby.user_username}}</td>
+                    <td>${{o.order_amt}}</td>
+                    <td>{{ o.order_date}}</td>
+                    <td>{{o.order_status}}</td>
+                    <td ><p class="btn btn-dark btn-sm" ><a class="link-light" href="/account/order/{{o.order_id}}/">Details</a></p></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{%endblock%}

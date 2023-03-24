@@ -1,0 +1,56 @@
+{%extends 'user/template.html'%}
+{%block body%}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 art-prof-ban " align="center">
+      <h1 class="mt-5">Favorites</h1>
+      <h4 class="mt-2"></h4>
+    </div>
+  <div class="col-md-3 " align="center">
+    {%if deets.user_pix != None %}
+    <img src="{{url_for('static',filename='/uploads/'+deets.user_pix)}}" alt="profile picture" height="250" width ="250" class="profile-img mt-5 ms-5">
+    {%else%}
+    <img src="{{url_for('static',filename='images/def_user.png')}}" alt="profile picture" height="250" width ="250" class="profile-img mt-5 ms-5">
+    {%endif%}
+    <h3 class="mt-5">{{deets.user_username}}</h3>
+  </div>
+
+  <div class="col-md-9  mt-5 artist-art-row">
+    {%if fav != [] %}
+    <!-- Art Items -->
+    {% for f in fav %}
+
+    <div class="col-md-3" class="art-item">
+      <img src="{{url_for('static',filename='/uploads/'+f.art_ref.art_pix)}}" alt="profile picture" height="200" width ="200" class="">
+      <p>
+      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
+      <a href="/addfavorites/{{f.fav_artid}}/" >
+        <span style=" color: red;">
+          <i class="fa fa-heart fa-lg" ></i>
+        </span>
+      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
+      <div class="row">
+        <div class="col-md-7"><h6>{{f.art_ref.art_title}}</h6></div>
+        <div class="col-md-5 "><h6>${{f.art_ref.art_price}}</h6></div>
+      </div>
+      <p>{{f.art_ref.cat.category_name}}, {{f.art_ref.art_dimension}}</p>
+    </div>
+    {% endfor %}
+    {%else%}
+    <div class="col">
+      <h3> You have no favorites </h3>
+    </div>
+    {%endif%}
+  </div>
+  </div>
+  </div>
+
+{%endblock%}
+{%block javascript%}
+<script>
+  $(document).ready(function(){
+    $('#fav').click(function(){})
+  })
+</script>
+{%endblock%}

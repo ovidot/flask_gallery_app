@@ -13,14 +13,49 @@
     <div class="col-xs-5 col-md-12">
         <h6 >ADDRESS DETAILS</h6>
         <hr>
-        <input name="" type="text" class="form-control mb-3" placeholder="House Number">
-        <input name="" type="text" class="form-control mb-3" placeholder="Street Name">
-        <input name="" type="text" class="form-control mb-3" placeholder="City and State">
-        <input name="" type="number" class="form-control mb-3" placeholder="Contact Phone No">
-        <textarea name="delivery-details" cols="50" id="dd" placeholder="Enter Full Delivery address"></textarea>
-        <button class="btn btn-dark col-6"> Save shipping address</button>
+        <input id="number" name="" type="text" class="form-control mb-3" placeholder="House Number">
+        <input id="street-name" name="" type="text" class="form-control mb-3" placeholder="Street Name">
+        <input id="city-state"  name="" type="text" class="form-control mb-3" placeholder="City and State">
+        <input id="phone-no" name="" type="number" class="form-control mb-3" placeholder="Contact Phone No">
+        <textarea id="full-address" name="delivery-details" disabled cols="50" placeholder=" Full Delivery address">{{deets.user_address}}</textarea>
+        <button id="save" class="btn btn-dark col-6"> Save shipping address</button>
        </div>
 
 </form>
 
+{%endblock%}
+
+{%block javascript%}
+<script>
+  $(document).ready(function(){
+    $('#save').click(function(){
+      var num = $('#number').val()
+      var street =$('#street-name').val()
+      var cityState=$('#city-state').val()
+      var phone =$('#phone-no').val()
+      var address=$('#full-address').val(num+', '+street+', '+cityState)
+      var csrf = "{{csrf_token()}}"
+      var data2send = {
+      "phone":phone,
+      "number":num,
+      "street":street,
+      "city":cityState,
+      "csrf_token":csrf}
+
+      $.ajax({
+        url:"/update/address",
+        data:data2send,
+        type:'get',
+        success:function(rsp){
+         alert(rsp)
+         $('#btn-save').click()
+        },
+        error:function(e){
+          console.log(e)
+        }
+      })
+    })
+  })
+
+</script>
 {%endblock%}

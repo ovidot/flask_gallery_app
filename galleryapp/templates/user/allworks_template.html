@@ -41,7 +41,7 @@
 
 </select>
 <hr>
-<!-- <div class="accordion" id="accordionPanelsStayOpenExample">
+<div class="accordion" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -159,7 +159,7 @@
                     <input type="checkbox" value="{{s.subject_id}}">
                 <label for="">{{ s.subject_name}}</label>
                 </div>
-                
+
                     {% endfor %}
                 {%else%}
                 <h6>No data available</h6>
@@ -184,21 +184,19 @@
                     {% for s in user %}
                     <div>
                     <input type="checkbox" value="{{s.subject_id}}">
-                    <label for="">{{ s.user_username}}</label>
+                    <label for="">{{ s.myuploads.artist_fullname}}</label>
                     </div>
                     {% endfor %}
                     {%else%}
                     <h6>No data available</h6>
                     {%endif%}
                     </ol>
-                <hr>
-                <h6><a href="#">view more</a></h6>
-                <hr>
+                <hr>z
             </div>
         </div>
         </div>
 </div> 
-    <hr>-->
+    <hr>
   </div>
 {%block artbody%}
 

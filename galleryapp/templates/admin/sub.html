@@ -1,0 +1,36 @@
+{% extends 'admin/admin_template.html' %}
+{% block dashboard_header %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Manage Users</h1>
+</div>
+{% endblock%}
+{% block content %}
+  <div class="col-md-9">
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <table class="table table-stripped bg-light text-black">
+            <thead>
+            <tr>
+                <th> S/N </th>
+                <th>Email</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for e in news_list %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{ e.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block section%}
+
+{% endblock %}

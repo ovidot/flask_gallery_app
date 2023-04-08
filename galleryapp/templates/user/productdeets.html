@@ -26,9 +26,9 @@
             </div>
             <div class="mt-4">
                 {%if art.art_availablestatus != '0' %}
-                <button class="btn btn-dark col-10"> <a href="/cart/{{art.art_id}}/" class="link-light"></a> Add to Cart</button>
+                <a href="/cart/{{art.art_id}}/" class="link-light btn btn-dark col-10">Add to Cart</a> 
                 {%else%}
-                <button class="btn btn-dark col-10"> <a class="link-light" href="#"></a>SOLD!</button>
+                <button class="btn btn-dark col-10"> SOLD!</button>
                 {%endif%}
             </div>
             <div class="mt-2">

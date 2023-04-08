@@ -5,7 +5,7 @@ from sqlalchemy import or_
 #import from local files
 from werkzeug.security import generate_password_hash,check_password_hash
 from galleryapp import app,db
-from galleryapp.models import User,Admin,Category,Artworks,Medium,Style,Material,Subject,Orders,Order_details
+from galleryapp.models import User,Admin,Category,Artworks,Medium,Style,Material,Subject,Orders,Order_details,Newsletter
 
 
 # ADMIN START
@@ -213,6 +213,15 @@ def delete_subject(dell):
         db.session.delete(subj)
         db.session.commit()
     return redirect('/admin/category')
+
+@app.route('/admin/newslist')
+def news_list():
+    if session.get('admin') == None:
+        return redirect('/admin/login')
+    else:
+        news_list = db.session.query(Newsletter.email).all()
+        return render_template('/admin/sub.html',news_list=news_list)
+
 
 #ADMIN END
 

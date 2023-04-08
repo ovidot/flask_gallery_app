@@ -51,7 +51,7 @@
         <h5 class="me-3">${{cart_total[0]}}</h5>
       </div>
       <hr>
-      <div style="background-color: #ffffff;text-decoration: none;color:black" align="center"><a  href="/cart" class="text-secondary">Modify Cart</a></div>
+      <div style="background-color: #ffffff;text-decoration: none;color:black" align="center"><a  href="/cart" class="text-light btn btn-dark">Modify Cart</a></div>
     </div>
     <form action="/payment" method="post">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">

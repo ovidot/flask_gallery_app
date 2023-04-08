@@ -6,6 +6,9 @@
  border: 1px solid black ;
 } */
 
+.btn{
+  background-image:linear-gradient(rgba(15, 20, 29, 0.331), rgba(15, 135, 215, 0.5)),url("") !important;
+}
 a:link {
   text-decoration: none;
   color: black;
@@ -14,24 +17,38 @@ a:link {
 body {
   background-color: white!important;
 }
+.cart-count{
+  position: static;
+}
 /*Login page css*/
+.login-bg button{
+  color: #333;
+  background-color: transparent;
+  border-color: black;
+}
+.login-bg button:hover{
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
 .login-bg{
   background-image: linear-gradient(rgba(37, 146, 193, 0.5), rgba(177, 35, 172, 0.5)),url("../images/art/3.jpg");
   background-size:cover;
-  height: 800px;
+  height: 550px;
+  width: 1100px;
   border-radius:20px ;
 }
 .lgform-bg{
   background:linear-gradient(rgba(37, 146, 193, 0.223), rgba(177, 35, 172, 0.379));
   border-radius: 20px;
-  height: 500px;
+  height: 400px;
   box-shadow:5px 5px 5px 5px #333;
   color: white;
-
 }
 .lgform-txt{
   color: white;
   font-size:medium;
+  font-family: cursive;
 }
 .profile-img{
     border-radius:100%;

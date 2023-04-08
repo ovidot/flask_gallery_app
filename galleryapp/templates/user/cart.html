@@ -11,17 +11,18 @@
   <div class="row  mt-3">
     <div class="col-md-6 offset-1 " style="background-color: #ffff;">
     {% for c in cart_items %}
-  <div class="col-md-11 offset-1 mt-5 pt-3" style="background-color: #ffff;justify-content:space-evenly;display:flex;">
-    <div class="col-2">
+  <div class="col-md-11 mt-5 pt-3" style="background-color: #ffff;justify-content:space-evenly;display:flex;">
+    <div class="col-lg-3">
       <img src="{{url_for('static',filename='/uploads/'+c.cart_art.art_pix)}}" width="120" height="120" alt="cart item image">
     </div>
-    <div style="display: grid;">
-      <span>{{c.cart_art.art_title}}</span>
-        <span>{{c.cart_art.artist_fullname}}</span>
-        <span>{{c.cart_art.cat.category_name}}</span>
+    <div class="col-md-5" >
+      <p>{{c.cart_art.art_title}}</p>
+        <p>{{c.cart_art.artist_fullname}}</p>
+        <p>{{c.cart_art.cat.category_name}}</span>
+        
     </div>
-        <span>${{c.cart_itemprice}}</span>
-        <div class="col-1"> <a href="/del/{{c.cart_id}}/" type="botton" ><i class="fa fa-solid fa-trash"></i></a></div>
+    <span>${{c.cart_itemprice}}</span>
+        <div class="col-md-1"> <a href="/del/{{c.cart_id}}/" type="botton" ><i class="fa fa-solid fa-trash"></i></a></div>
         <hr>
       </div>
       {% endfor %}

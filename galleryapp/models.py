@@ -24,7 +24,6 @@ class User(db.Model):
     mytrans = db.relationship("Payment", back_populates="transby")
     myorders=db.relationship("Orders",back_populates="orderby")
     myuploads =db.relationship("Artworks",back_populates="uploadedby")
-    myorders = db.relationship("Orders",back_populates="orderby")
     #mycomments = db.relationship("Comments", back_populates="commentby")
 
 class Galleries(db.Model):

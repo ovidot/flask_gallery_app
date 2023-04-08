@@ -716,6 +716,10 @@ def cat_filter(idd):
             idds.append(i.product_id)
         return jsonify(idds)
 
+@app.route('/blog', methods=['GET','POST'])
+def blog():
+    return render_template('user/blog.html')
+
 
 @app.route('/temp')
 def template():

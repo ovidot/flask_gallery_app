@@ -38,7 +38,7 @@
         <button class="btn btn-dark" ><a class="link-light" href="{{url_for('user_signup')}}">Register</a></button>
         {%else%}
         <div class="dropdown">
-          <img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"<span class="fa" style="font-size:14px">10</span>
+          <img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="fa fa-number cart-count" style="font-size:14px" > {{cart_items|count}} </span>
 
           <a href="/favorites/"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon"></a>
           {%if deets.user_pix == None %}

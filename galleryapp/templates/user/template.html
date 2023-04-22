@@ -38,13 +38,17 @@
         <button class="btn btn-dark" ><a class="link-light" href="{{url_for('user_signup')}}">Register</a></button>
         {%else%}
         <div class="dropdown">
-          <img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="fa fa-number cart-count" style="font-size:14px" > {{cart_items|count}} </span>
+          {% if cart_items|count == 0 %}
+          <img src="{{url_for('static',filename='images/cart.png')}}" class="pointer cart-icon" alt="cart_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="fa fa-number cart-count" style="font-size:14px" ></span>
+          {% else %}
+          <img src="{{url_for('static',filename='images/cart.png')}}" class="pointer cart-icon" alt="cart_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="fa fa-number cart-count" > {{cart_items|count}} </span>
+          {%endif%}
 
           <a href="/favorites/"><img src="{{url_for('static',filename='images/heart.png')}}" alt="favorite_icon"></a>
           {%if deets.user_pix == None %}
-          <img class=" rounded-circle dropdown-toggle" type="" data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false" src="{{url_for('static',filename='images/def_user.png')}}" width="50" height="50" class="" alt="user_icon">
+          <img class="pointer rounded-circle dropdown-toggle" type="" data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false" src="{{url_for('static',filename='images/def_user.png')}}" width="50" height="50" class="" alt="user_icon">
           {%else%}
-          <img class=" rounded-circle dropdown-toggle" type="" data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false" src="{{url_for('static',filename='/uploads/'+deets.user_pix)}}" width="50" height="50" class="" alt="user_icon">
+          <img class="pointer rounded-circle dropdown-toggle" type="" data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false" src="{{url_for('static',filename='/uploads/'+deets.user_pix)}}" width="50" height="50" class="" alt="user_icon">
           {%endif%}
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="{{url_for('profile')}}">HI, {{deets.user_username}}</a></li>
@@ -184,12 +188,9 @@
     </section>
     <!-- Section: Social media -->
     
-    <!-- Section: Links  -->
     <section class="">
       <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
         <div class="row mt-3">
-          <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
             <h6 class="text-uppercase fw-bold mb-4">
@@ -198,6 +199,7 @@
             <p>
               Short Description
             </p>
+            <p>We provide a seamless and user-friendly experience for our customers, with easy browsing and purchasing options. We believe that art should be accessible to everyone, and that's why we offer a wide range of styles, mediums, and price points to cater to all tastes and budgets.</p>
           </div>
           <!-- Grid column -->
     
@@ -229,16 +231,16 @@
               Useful links
             </h6>
             <p>
-              <a href="#!" class="text-reset">our story</a>
+              <a href="{{url_for('contact_us')}}" class="text-reset">Our story</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">Profile</a>
+              <a href="{{url_for('profile')}}" class="text-reset">My Profile</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">Orders</a>
+              <a href="{{url_for('orders')}}" class="text-reset">Orders</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">Help</a>
+              <a href="{{url_for('contact_us')}}" class="text-reset">Help</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -252,8 +254,8 @@
               <i class="fas fa-envelope me-3"></i>
               ovidotfinance@gmail.com
             </p>
-            <p><i class="fas fa-phone me-3"></i> +234 803 45 6789</p>
-            <p><i class="fas fa-print me-3"></i> +234 803 45 6789</p>
+            <p><i class="fas fa-phone me-3"></i> +234 803 45 67890</p>
+            <p><i class="fas fa-print me-3"></i> +234 803 45 67890</p>
           </div>
           <!-- Grid column -->
         </div>
@@ -314,24 +316,23 @@
     </div>
     <div class="offcanvas-body">
       <div class="container">
-
         <!-- CART ITEMS -->
         <div class="row">
           <div class="col-md-12 cart-prof-ban " align="center">
             <h1 class="my-3">My Cart</h1>
           </div>
-          <div class="col-12 offset-5 mb-3">
-          </div>
           {%if cart_items != None:%}
           {% for i in cart_items %}
           <!-- Art Items -->
+          <div class="my-2 offcanvas-positioning" style="display:flex;">
           <div class="col-md-2" class="art-item">
             <img src="{{url_for('static',filename='/uploads/'+i.cart_art.art_pix)}}" alt="product image" height="50" width ="50" class="">
           </div>
-              <div class="col-md-4"><h6>{{i.cart_art.art_title}}</h6></div>
-            <div class="col-md-3"><span><a href="/artist/{{i.cart_art.user_id}}/">{{i.cart_art.artist_fullname}}</a></span></div>
+            <div class="col-md-4"><h6>{{i.cart_art.art_title}}</h6></div>
+            <div class="col-md-3 me-2"><span><a href="/artist/{{i.cart_art.user_id}}/"><h6>{{i.cart_art.artist_fullname}}</h6></a></span></div>
             <div class="col-md-2 "><h6>{{i.cart_art.art_price}}</h6></div>
             <div class="col-md-1"> <a href="/del/{{i.cart_id}}/" type="botton" ><i class="fa fa-solid fa-trash"></i></a></div>
+          </div>
           {%endfor%}
           {%else%}
           <div>No cart items</div>
@@ -343,7 +344,7 @@
       <!-- <h6 class="col-5 pt-3 ">Estimated Total</h5>
       <h6 class="col-5 align-items-right "></h6> -->
       <button class="btn btn-success col-5 btn-lg"> <a href="/checkout" style="color:black"><b> Check-Out</b></a></button>
-      <button class="btn btn-dark col-5 btn-lg"> <a href="/allworks/1" style="color:black"><b> Keep Shoping</b></a></button>
+      <button class="btn btn-dark col-6 btn-lg"> <a href="/allworks/1" style="color:black"><b> Keep Shopping</b></a></button>
     </div>
   </div>
 </body>

@@ -7,36 +7,24 @@
       <h1 class="mt-5">Favorites</h1>
       <h4 class="mt-2"></h4>
     </div>
-  <div class="col-md-3 " align="center">
+  <div class="col-md-4 " align="center">
     {%if deets.user_pix != None %}
-    <img src="{{url_for('static',filename='/uploads/'+deets.user_pix)}}" alt="profile picture" height="250" width ="250" class="profile-img mt-5 ms-5">
+    <img src="{{url_for('static',filename='/uploads/'+deets.user_pix)}}" alt="profile picture" height="250" width ="250" class="profile-img mt-5">
     {%else%}
     <img src="{{url_for('static',filename='images/def_user.png')}}" alt="profile picture" height="250" width ="250" class="profile-img mt-5 ms-5">
     {%endif%}
     <h3 class="mt-5">{{deets.user_username}}</h3>
   </div>
 
-  <div class="col-md-9  mt-5 artist-art-row">
-    {%if fav != [] %}
-    <!-- Art Items -->
-    {% for f in fav %}
+  <div class="col-md-8  mt-5 artist-art-row">
 
-    <div class="col-md-3" class="art-item">
-      <img src="{{url_for('static',filename='/uploads/'+f.art_ref.art_pix)}}" alt="profile picture" height="200" width ="200" class="">
-      <p>
-      <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
-      <a href="/addfavorites/{{f.fav_artid}}/" >
-        <span style=" color: red;">
-          <i class="fa fa-heart fa-lg" ></i>
-        </span>
-      <a href="#"><img src="{{url_for('static',filename='images/user.png')}}" alt="user_icon" class="art-lnk"></a></p>
-      <div class="row">
-        <div class="col-md-7"><h6>{{f.art_ref.art_title}}</h6></div>
-        <div class="col-md-5 "><h6>${{f.art_ref.art_price}}</h6></div>
-      </div>
-      <p>{{f.art_ref.cat.category_name}}, {{f.art_ref.art_dimension}}</p>
-    </div>
-    {% endfor %}
+    <!-- Art Items -->
+    {%if fav != [] %}
+    <div class="col-md-3">
+      {% for f in fav %}
+      
+      {% endfor %}
+  </div>
     {%else%}
     <div class="col">
       <h3> You have no favorites </h3>

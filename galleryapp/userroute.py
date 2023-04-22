@@ -148,7 +148,7 @@ def user_logout():
 @app.route('/profile')
 def profile():
     if session.get('user') == None:
-        return redirect('/user_login')
+        return redirect('/login')
     else:
         id = session.get('user')
         deets = db.session.query(User).get(id)
@@ -197,7 +197,7 @@ def account():
 @app.route('/studio')
 def studio():
     if session.get('user') == None:
-        return redirect('/user_login')
+        return redirect('/login')
     else:
         id = session['user']
         deets=db.session.query(User).get(id)
@@ -214,7 +214,7 @@ def studio():
 @app.route('/studio/submit',methods=['POST'])
 def add_artworks():
     if session.get('user') == None:
-            return redirect('/user_login')
+            return redirect('/login')
     else:
         id = session['user']
         deets=db.session.query(User).get(id)
@@ -262,7 +262,7 @@ def add_artworks():
 @app.route('/account/updateprod',methods=['GET','POST'])
 def update_product():
     if session.get('user') == None:
-        return redirect('/user_login')
+        return redirect('/login')
     if request.method == 'GET':
         id = session.get('user')
         deets=db.session.query(User).filter(User.user_id==id).first()
@@ -275,7 +275,7 @@ def update_product():
 @app.route('/account/shipping',methods=['GET','POST'])
 def shipping():
     if session.get('user') == None:
-        return redirect('/user_login')
+        return redirect('/login')
     else:
         if request.method == 'GET':
             id = session.get('user')
@@ -286,7 +286,7 @@ def shipping():
 # @app.route('/account/sales',methods=['GET','POST'])
 # def sales():
 #     if session.get('user') == None:
-#         return redirect('/user_login')
+#         return redirect('/login')
 #     else:
 #         if request.method == 'GET':
 #             id = session.get('user')
@@ -298,7 +298,7 @@ def shipping():
 @app.route('/account/orders',methods=['GET','POST'])
 def orders():
     if session.get('user') == None:
-        return redirect('/user_login')
+        return redirect('/login')
     else:
         if request.method == 'GET':
             id = session.get('user')
@@ -310,7 +310,7 @@ def orders():
 @app.route('/account/order/<oid>/',methods=['GET','POST'])
 def order_deets(oid):
     if session.get('user') == None:
-        return redirect('/user_login')
+        return redirect('/login')
     else:
         id = session.get('user')
         all_orders= db.session.query(Orders).filter(Orders.order_id==oid).all()

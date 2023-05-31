@@ -3,59 +3,68 @@
 {%block body%}
 
 <div class="container">
-  <div class="row" >
-    <div class="col-md-6 ms-5 mt-5 bg-success" align="center" >
+  <div class="row">
+    <div class="col-md-6 ms-md-5  mt-5 bg-success bg-image justify" align="center" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+    height: 100vh">
       <h2>Ovidot's </h2>
-      <h4>Welcome to our website, where art lovers can find a diverse selection of high-quality, original artwork from talented artists around the world. We strive to bring together a community of artists and buyers to make the process of buying and selling art more accessible and enjoyable for everyone.</h4>
+      <h4>Welcome to our website, where art lovers can find a diverse selection of high-quality, original artwork from
+        talented artists around the world. We strive to bring together a community of artists and buyers to make the
+        process of buying and selling art more accessible and enjoyable for everyone.</h4>
       <h5>
-      We provide a seamless and user-friendly experience for our customers, with easy browsing and purchasing options. We believe that art should be accessible to everyone, and that's why we offer a wide range of styles, mediums, and price points to cater to all tastes and budgets.
+        We provide a seamless and user-friendly experience for our customers, with easy browsing and purchasing options.
+        We believe that art should be accessible to everyone, and that's why we offer a wide range of styles, mediums,
+        and price points to cater to all tastes and budgets.
       </h5>
       <h5>
-      Our team is passionate about art and dedicated to supporting artists in their creative endeavors. We work closely with artists to curate a selection of artwork that reflects their unique styles and showcases their talent.</h5>
+        Our team is passionate about art and dedicated to supporting artists in their creative endeavors. We work
+        closely with artists to curate a selection of artwork that reflects their unique styles and showcases their
+        talent.</h5>
       <h5>
-      Whether you're a seasoned art collector or just starting to explore the world of art, we hope you'll find something special on our website. Thank you for supporting the arts and for being a part of our community!</h5></div>
-    <div class="col-md-4 pt-5 ms-5" >
-        <h3>Contact Us</h3>
-        {% with messages=get_flashed_messages()%}
+        Whether you're a seasoned art collector or just starting to explore the world of art, we hope you'll find
+        something special on our website. Thank you for supporting the arts and for being a part of our community!</h5>
+    </div>
+    <div class="col-md-4 pt-5 ms-5">
+      <h3>Contact Us</h3>
+      {% with messages=get_flashed_messages()%}
       {%if messages %}
       {% for m in messages %}
-        <div class="alert alert-success">{{m}}</div>
-        {% endfor %}
-        {% endif %}
+      <div class="alert alert-success">{{m}}</div>
+      {% endfor %}
+      {% endif %}
       {%endwith%}
-        <form action="" method="post" novalidate>
+      <form action="" method="post" novalidate>
         {{ contact.csrf_token}}
         <div class="form-group mb-3 row ">
-            {{ contact.email.label }}
-            <div class="col-md-12">
-                {{contact.email(class_='form-control border-success')}}
-            </div>
-            {% if contact.email.errors %}
-            {% for email_error in contact.email.errors %}
-            <div class="col-auto">
-              <span class="alert alert-danger"> {{ email_error}}</span>
-            </div>
-            {% endfor %}
-            {% endif %}
+          {{ contact.email.label }}
+          <div class="col-md-12">
+            {{contact.email(class_='form-control border-success')}}
+          </div>
+          {% if contact.email.errors %}
+          {% for email_error in contact.email.errors %}
+          <div class="col-auto">
+            <span class="alert alert-danger"> {{ email_error}}</span>
+          </div>
+          {% endfor %}
+          {% endif %}
         </div>
 
         <div class="form-group mb-3 row">
           {{ contact.message.label}}
-            <div class="col-md-12">
-                {{contact.message(class_='form-control border-success')}}
-            </div>
-            {% if contact.message.errors %}
-            {% for message_error in contact.message.errors %}
-            <div class="col-auto">
-              <span class="alert alert-danger"> {{ message_error}}</span>
-            </div>
-            {% endfor %}
-            {% endif %}
+          <div class="col-md-12">
+            {{contact.message(class_='form-control border-success')}}
+          </div>
+          {% if contact.message.errors %}
+          {% for message_error in contact.message.errors %}
+          <div class="col-auto">
+            <span class="alert alert-danger"> {{ message_error}}</span>
+          </div>
+          {% endfor %}
+          {% endif %}
         </div>
         <div class="form-group">
-            {{contact.submit(class_='btn btn-success')}}
+          {{contact.submit(class_='btn btn-success')}}
         </div>
-    </form>
+      </form>
     </div>
   </div>
 </div>

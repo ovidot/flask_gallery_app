@@ -9,23 +9,31 @@
 <div class="container-fluid cart" style="background-color: #F5F5F5;">
   <div class="row d-flex" >
 
-    <div class="col-md-6 mt-5 ms-md-5 offset-md-3" style="background-color: #ffffff;height:400px;" >
+    <div class="col-lg-6 mt-5 ms-md-5 offset-md-3" style="background-color: #ffffff;height:400px;" >
       <div class="col-md-12">
        <h6 style="color:gray;">CHECKOUT</h6>
       </div>
       <div class="col-xs-5 col-md-12">
         <h6 >ADDRESS DETAILS</h6>
         <hr>
+        {% if deets.user_address %}
+        <div class="p-5 item-center">
+          <textarea id="full-address" name="delivery-details" disabled cols="50" placeholder=" Full Delivery address">{{deets.user_address}}</textarea>
+        </div>
+        {%else%}
+        <div class="">
           <input id="number" name="" type="text" class="form-control mb-3" placeholder="House Number">
-        <input id="street-name" name="" type="text" class="form-control mb-3" placeholder="Street Name">
-        <input id="city-state"  name="" type="text" class="form-control mb-3" placeholder="City and State">
-        <input id="phone-no" name="" type="number" class="form-control mb-3" placeholder="Contact Phone No">
-        <textarea id="full-address" name="delivery-details" disabled cols="50" placeholder=" Full Delivery address">{{deets.user_address}}</textarea>
-        <p><button id="save" class="btn btn-dark col-6">Save shipping address and Proceed</button></p>
+          <input id="street-name" name="" type="text" class="form-control mb-3" placeholder="Street Name">
+          <input id="city-state"  name="" type="text" class="form-control mb-3" placeholder="City and State">
+          <input id="phone-no" name="" type="number" class="form-control mb-3" placeholder="Contact Phone No">
+          <textarea id="full-address" name="delivery-details" disabled cols="50" placeholder=" Full Delivery address">{{deets.user_address}}</textarea>
+          <p><button id="save" class="btn btn-dark col-6">Save shipping address and Proceed</button></p>
+        </div>
+        {%endif%}
        </div>
     </div>
 
-    <div class="col-md-4 me-5 mt-5 offset-md-1" style="background-color: #ffffff;height:450px;">
+    <div class="col-lg-4 me-5 mt-5 offset-md-1" style="background-color: #ffffff;height:450px;">
       <div class="col-md-12">
         <h6 style="color:gray;">ORDER SUMMARY</h6>
         <hr>

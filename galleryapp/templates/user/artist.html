@@ -24,9 +24,9 @@
     <div class="row mt-5 artist-art-row">
       {% for i in works %}
     <!-- Art Items -->
-    <div class="col-md-4" class="art-item">
-      <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image" height="300" width ="300" class="">
-      <p>
+    <div class="col-md-4 art-item d-flex flex-column align-items-center justify-content-center">
+      <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image" height="auto" width ="100%" class="">
+      <p class="mt-2">
         {%if i.art_availablestatus != '0' %}
         <a href="/cart/{{i.art_id}}/"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" id="cart"  aria-controls="offcanvasExample"></a>
         {%else%}
@@ -54,7 +54,7 @@
       <p>{{i.cat.category_name}}<span>,{{i.art_dimension}}</span></p>
     </div>
     {%endfor%}
-    <div class="col-md-12" align="center"></div><button class="btn btn-dark col-3">View all {{works|count}} artworks</button></div>
+    <button class="btn btn-dark col-3 mt-3">View all {{works|count}} artworks</button></div>
   </div>
   </div>
 </div>

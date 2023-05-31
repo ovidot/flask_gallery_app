@@ -1,4 +1,4 @@
-/* *{
+/* * {
   min-height: 60px;
   border: 1px solid red;
 } */
@@ -6,110 +6,129 @@
  border: 1px solid black ;
 } */
 
-.offcanvas-positioning{
-  display:flex;
+.offcanvas-positioning {
+  display: flex;
   align-items: center;
 }
 
-.btn{
-  background-image:linear-gradient(rgba(15, 20, 29, 0.331), rgba(15, 135, 215, 0.5)),url("") !important;
+.btn {
+  transition: all 1.5s ease-in-out;
 }
+
+.btn:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(
+      rgba(15, 20, 29, 0.331),
+      rgba(15, 135, 215, 0.5)
+    ),
+    url("") !important;
+}
+
 a:link {
   text-decoration: none;
   color: black;
 }
-.pointer{
-  cursor:pointer;
+.pointer {
+  cursor: pointer;
 }
-.cart-icon{
- position:relative;
-
+.cart-icon {
+  position: relative;
 }
-.cart-count{
+.cart-count {
   position: absolute;
-  top:15px;
+  top: 15px;
   right: 100px;
 
-  font-size:10px;
+  font-size: 10px;
   border-radius: 100%;
 }
 
 body {
-  background-color: white!important;
+  background-color: white !important;
 }
 
 /*Login page css*/
-.login-bg button{
+.login-bg button {
   color: #333;
   background-color: transparent;
   border-color: black;
 }
-.login-bg button:hover{
+.login-bg button:hover {
   color: #fff;
   background-color: black;
   border-color: black;
 }
-.login-bg{
-  background-image: linear-gradient(rgba(37, 146, 193, 0.5), rgba(177, 35, 172, 0.5)),url("../images/art/3.jpg");
-  background-size:cover;
+.login-bg {
+  background-image: linear-gradient(
+      rgba(37, 146, 193, 0.5),
+      rgba(177, 35, 172, 0.5)
+    ),
+    url("../images/art/3.jpg");
+  background-size: cover;
   height: 550px;
   width: 1100px;
-  border-radius:20px ;
+  border-radius: 20px;
 }
-.lgform-bg{
-  background:linear-gradient(rgba(37, 146, 193, 0.223), rgba(177, 35, 172, 0.379));
+.lgform-bg {
+  background: linear-gradient(
+    rgba(37, 146, 193, 0.223),
+    rgba(177, 35, 172, 0.379)
+  );
   border-radius: 20px;
   height: 400px;
-  box-shadow:5px 5px 5px 5px #333;
+  box-shadow: 5px 5px 5px 5px #333;
   color: white;
 }
-.lgform-txt{
+.lgform-txt {
   color: white;
-  font-size:medium;
+  font-size: medium;
   font-family: cursive;
 }
-.profile-img{
-    border-radius:100%;
-    border:3px solid black;
-  }
+.profile-img {
+  border-radius: 100%;
+  border: 3px solid black;
+}
 /*Home page css*/
-.heading{
+.heading {
   font-family: cursive;
-  font-size: 4em;
   font-weight: bolder;
+}
+@media (min-width: 400px) {
+  .heading {
+    font-size: 3em;
+  }
 }
 
 .sgnup-btn {
-  background-color: #A2A6F8 !important;
-  font-weight:700 !important;
-  font-size:32px !important;
-  font-family:cursive;
-
+  background-color: #a2a6f8 !important;
+  /* font-weight: 700 !important; */
+  font-size: 32px !important;
+  font-family: cursive;
 }
 
-#cat-1{
+#cat-1 {
   font-size: 10rem;
-  font-weight:bolder;
+  font-weight: bolder;
 }
-.cat-1img{
+.cat-1img {
   height: 500px;
 }
-.cat-1txt{
-  background-color:bisque;
+.cat-1txt {
+  background-color: bisque;
   height: 500px;
   color: black;
   font-family: cursive;
   font-weight: bolder;
 }
 
-.cat-1img img{
+.cat-1img img {
   object-fit: cover;
   height: 100%;
   width: 100%;
   filter: brightness(50%);
 }
 
-.sub-heading{
+.sub-heading {
   font-family: rubik;
   font-size: 1.2rem;
 }
@@ -122,46 +141,49 @@ body {
   position: relative;
   top: 100px;
 }
-#sub-1{
-  font-family:'Times New Roman', Times, serif;
+#sub-1 {
+  font-family: "Times New Roman", Times, serif;
   font-size: 3rem;
-  font-weight:bolder;
+  font-weight: bolder;
   background-color: white;
   color: black;
   width: 100%;
 }
 
-.form-linkout{
-  text-decoration:none;
-  color:black;
+.form-linkout {
+  text-decoration: none;
+  color: black;
 }
 
-.form-linkout:hover{
-  text-decoration:underline;
-  color:green;
+.form-linkout:hover {
+  text-decoration: underline;
+  color: green;
 }
 /* #login-img {
   background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("../images/art/4.jpg");
 } */
 #signup-img {
-  background-image: linear-gradient(rgba(225, 222, 18, 0.5), rgba(15, 135, 215, 0.5)),url("../images/art/4.jpg");
-  height: 750px ;
-  box-shadow:3px 3px 15px 5px #333;
+  background-image: linear-gradient(
+      rgba(225, 222, 18, 0.5),
+      rgba(15, 135, 215, 0.5)
+    ),
+    url("../images/art/4.jpg");
+  height: 750px;
+  box-shadow: 3px 3px 15px 5px #333;
 }
 
-.lnd-row{
-    display: flex;
-    justify-content: center;
+.lnd-row {
+  display: flex;
+  justify-content: center;
 }
 
 .lnd-pge {
-  background-color:black;
+  background-color: black;
   height: 500px;
   color: white;
   font-family: cursive;
   font-weight: bolder;
 }
-
 
 .carousel-img {
   height: 500px;
@@ -172,9 +194,6 @@ body {
   height: 500px;
   background-color: white;
 }
-
-
-
 
 .nav-link {
   text-decoration: none;
@@ -204,44 +223,53 @@ footer {
 }
 
 /* Artist page styling */
-.artist_img{
-  border-radius:100%;
+.artist_img {
+  border-radius: 100%;
   position: relative;
   bottom: 25px;
-  border:3px solid black;
+  border: 3px solid black;
 }
-.art-prof-ban{
-  background-image:linear-gradient(rgba(15, 20, 29, 0.331), rgba(15, 135, 215, 0.5)),url("../images/pix.jpg");;
-  background-color:antiquewhite;
-  height:200px;
-  width:100%;
+.art-prof-ban {
+  background-image: linear-gradient(
+      rgba(15, 20, 29, 0.331),
+      rgba(15, 135, 215, 0.5)
+    ),
+    url("../images/pix.jpg");
+  background-color: antiquewhite;
+  height: 200px;
+  width: 100%;
   color: white;
 }
-.cart-prof-ban{
-  background-image:linear-gradient(rgba(15, 20, 29, 0.331), rgba(15, 135, 215, 0.5)),url("../images/pix.jpg");;
-  height:100px;
-  width:100%;
+.cart-prof-ban {
+  background-image: linear-gradient(
+      rgba(15, 20, 29, 0.331),
+      rgba(15, 135, 215, 0.5)
+    ),
+    url("../images/pix.jpg");
+  height: 100px;
+  width: 100%;
   color: white;
 }
-.artist-prof-banner{
-  height:inherit;
-  width:100%;
-  object-fit:cover;
+.artist-prof-banner {
+  height: inherit;
+  width: 100%;
+  object-fit: cover;
 }
 /* Artworks Display */
-.art-item{
+
+.art-item:hover {
   border: 1px solid black;
 }
-.artist-art-row{
+.artist-art-row {
   justify-content: space-around;
-  display:-ms-grid;
+  display: -ms-grid;
 }
-.art-lnk{
+.art-lnk {
   height: 20px;
   width: 20px;
 }
 
-.art-lnk:hover{
+.art-lnk:hover {
   height: 20px;
   width: 20px;
   background-color: red;
@@ -249,26 +277,26 @@ footer {
 }
 
 /* GALLERY STYLE */
-.gallery-prof-banner{
-  height:350px;
-  width:100%;
-  object-fit:cover;
-  filter:brightness(50%)
+.gallery-prof-banner {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
 }
 
 /* CART CSS */
-.cart{
-  background-color: #F9F9F9;
+.cart {
+  background-color: #f9f9f9;
   justify-content: space-evenly;
 }
 
-#cart-checkout{
-  position:sticky;
+#cart-checkout {
+  position: sticky;
   top: 20px;
 }
-.size{
-  width:280px;
-  height:300px;
+.size {
+  width: 280px;
+  height: 300px;
 }
 .offcanvas-size-xl {
   --bs-offcanvas-width: min(95vw, 600px) !important;
@@ -276,7 +304,8 @@ footer {
 .offcanvas-size-xxl {
   --bs-offcanvas-width: min(95vw, 90vw) !important;
 }
-.offcanvas-size-md { /* add Responsivenes to default offcanvas */
+.offcanvas-size-md {
+  /* add Responsivenes to default offcanvas */
   --bs-offcanvas-width: min(95vw, 400px) !important;
 }
 .offcanvas-size-sm {

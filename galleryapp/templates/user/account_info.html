@@ -9,9 +9,9 @@
   {% endif %}
 {%endwith%}
 <form action="" enctype="multipart/form-data" method="post">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
-    <div class="form-grpoup">
-        <div class="col-md-3">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" id="">
+      <div class="form-grpoup">
+          <div class="col-md-3">
             <label for="">Email</label>
            </div>
            <div class="col-md-10 mb-3">
@@ -56,7 +56,7 @@
 
        <div class="form-group row">
         <label class=" mb-3">Profile Picture </label>
-        <input type="file" value="" name="pix">
+        <input type="file" value="{{deets.user_pix}}" name="pix">
         </div>
 
        <div class="col-10" align="right">

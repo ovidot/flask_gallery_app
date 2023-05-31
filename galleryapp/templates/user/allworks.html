@@ -11,8 +11,8 @@
   <div class="row mt-5 artist-art-row">
     {% for i in all_art %}
   <!-- Art Items class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" -->
-  <div class="col-md-4" class="art-item" id="art-itm">
-  <a href="/proddeets/{{i.art_id}}/"> <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image"  class="w-75 h-55"></a>
+  <div class="col-md-3 art-item mt-5 ms-2 p-2" id="art-itm" >
+  <a href="/proddeets/{{i.art_id}}/"> <img src="{{url_for('static',filename='/uploads/'+i.art_pix)}}" alt="product image"  class="w-100 h-50"></a>
     <p>
       {%if i.art_availablestatus != '0' %}
     <a href="/cart/{{i.art_id}}/"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" id="cart"  aria-controls="offcanvasExample"></a>

@@ -25,8 +25,8 @@
     <!-- Art Items -->
     {% for f in fav %}
 
-    <div class="col-md-3" class="art-item">
-      <img src="{{url_for('static',filename='/uploads/'+f.art_ref.art_pix)}}" alt="profile picture" height="200" width ="200" class="">
+    <div class="col-md-3 art-item d-flex flex-column align-items-center justify-content-center" >
+      <img src="{{url_for('static',filename='/uploads/'+f.art_ref.art_pix)}}" alt="profile picture" height="auto" width ="100%" class="">
       <p>
       <a href="#"><img src="{{url_for('static',filename='images/cart.png')}}" alt="cart_icon" class="art-lnk" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></a>
       <a href="/addfavorites/{{f.fav_artid}}/" >
@@ -50,12 +50,12 @@
   </div>
     <hr>
     <h3 class="pt-5 ">MY ARTWORKS</h3>
-    <div class="row mt-5 artist-art-row">
+    <div class="row mt-5 artist-art-row ">
       {%if myworks %}
       {% for a in myworks %}
     <!-- Art Items -->
-      <div class="col-md-4" class="art-item">
-      <img src="{{url_for('static',filename='/uploads/'+a.art_pix)}}" alt="profile picture" height="300" width ="300" class="">
+      <div class="col-md-4 art-item d-flex flex-column align-items-center justify-content-center">
+      <img src="{{url_for('static',filename='/uploads/'+a.art_pix)}}" alt="profile picture" height="auto" width ="100%" class="">
         <div class="row">
         <div class="col-md-7 mt-2"><h6>{{a.art_title}}</h6></div>
         <div class="col-md-5 mt-2"><h6>${{a.art_price}}</h6></div>
